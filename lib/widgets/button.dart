@@ -50,19 +50,17 @@ class ButtonWidget extends StatelessWidget {
       padding: const EdgeInsets.only(top: 16.0),
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            // background color
-            primary: Theme.of(context).buttonColor,
-            padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 45.0),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20)
-            ),
-            elevation: _elevation
-          ),
+              // background color
+              primary: Theme.of(context).buttonColor,
+              padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 45.0),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              elevation: _elevation),
           onPressed: action,
-          child: TextWidget(text: label?.toUpperCase() ?? "Label",
+          child: TextWidget(
+              text: label?.toUpperCase() ?? "Label",
               small: true,
-              color: Theme.of(context).buttonTheme.colorScheme?.secondary)
-      ),
+              color: Theme.of(context).buttonTheme.colorScheme?.secondary)),
     );
   }
 }

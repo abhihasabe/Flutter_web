@@ -23,14 +23,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  provider: any
-  connectivity: any
-  fluttertoast: any
-  shared_preferences: any
+  provider: ^6.0.1
+  connectivity_plus: ^2.0.2
+  fluttertoast: ^8.0.8
+  # shared_preferences: any
   sqflite: any
-  http: any
+  http: ^0.13.4
   webfeed: any
-  url_launcher: any
+  url_launcher: ^6.0.12
+  flutter_secure_storage: ^5.0.0-beta.5
 
 
   # The following adds the Cupertino Icons font to your application.
