@@ -15,12 +15,12 @@ Route<dynamic> controller(RouteSettings settings) {
     case splashPage:
       return MaterialPageRoute(builder: (context) => Splash());
     case homePage:
-      return NavSlideFromLeft(page:Dashboard());
+      return NavSlideFromLeft(page: Dashboard());
     default:
       return MaterialPageRoute(
           builder: (_) => Scaffold(
-            body: Center(
-                child: Text('No route defined for ${settings.name}')),
-          ));
+                body: Center(
+                    child: Text('No route defined for ${settings.name}')),
+              ));
   }
 }
