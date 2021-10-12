@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/animation/nav_slide_from_left.dart';
-import 'package:news_app/animation/nav_slide_from_top.dart';
 import 'package:news_app/screens/dashboard_screen.dart';
 import 'package:news_app/screens/splash_screen.dart';
 
@@ -16,12 +15,12 @@ Route<dynamic> controller(RouteSettings settings) {
     case splashPage:
       return MaterialPageRoute(builder: (context) => Splash());
     case homePage:
-      return NavSlideFromLeft(page:Dashboard());
+      return NavSlideFromLeft(page: Dashboard());
     default:
       return MaterialPageRoute(
           builder: (_) => Scaffold(
-            body: Center(
-                child: Text('No route defined for ${settings.name}')),
-          ));
+                body: Center(
+                    child: Text('No route defined for ${settings.name}')),
+              ));
   }
 }

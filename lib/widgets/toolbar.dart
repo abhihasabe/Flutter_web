@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'text.dart';
 import 'logo.dart';
 
 class ToolbarWidget extends StatelessWidget implements PreferredSizeWidget {
@@ -14,17 +13,29 @@ class ToolbarWidget extends StatelessWidget implements PreferredSizeWidget {
   final bool? logoWidget;
   final bool? hideBackArrow;
 
-  const ToolbarWidget({Key? key, this.hideBackArrow, this.logoWidget, this.leading, this.title, this.actions, this.color, this.elevation}) : super(key: key);
-  
+  const ToolbarWidget(
+      {Key? key,
+      this.hideBackArrow,
+      this.logoWidget,
+      this.leading,
+      this.title,
+      this.actions,
+      this.color,
+      this.elevation})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: hideBackArrow == true ? false : true,
-      title: logoWidget == true ? Center(child: LogoWidget(header: true, small: true)) :
-          Text("$title", style: Theme.of(context).textTheme.headline6,),
-      leading: leading,
-      actions: actions,
-      elevation: elevation != null ? elevation : 0.0
-    );
+        automaticallyImplyLeading: hideBackArrow == true ? false : true,
+        title: logoWidget == true
+            ? Center(child: LogoWidget(header: true, small: true))
+            : Text(
+                "$title",
+                style: Theme.of(context).textTheme.headline6,
+              ),
+        leading: leading,
+        actions: actions,
+        elevation: elevation != null ? elevation : 0.0);
   }
 }
