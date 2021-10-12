@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/animation/nav_slide_fade.dart';
 import 'package:news_app/route/route.dart' as route;
 
-import 'dashboard_screen.dart';
+import 'dashboard/ui/dashboard_screen.dart';
 
 class Splash extends StatefulWidget {
   @override

@@ -95,5 +95,4 @@ class MyThemes {
         color: themeType.contains("darkTheme")?iconDarkColor:iconColor,
       ));
   }*/
-
 }
