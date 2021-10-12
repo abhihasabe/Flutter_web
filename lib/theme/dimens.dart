@@ -14,3 +14,10 @@ final double fontTextSmaller = 12.0;
 final double fontInputWidget = 14.0;
 final double fontButton = 14.0;
 
+// PreSale dimensions
+final double circleWidth = 30.0;
+final double circleHeight = 30.0;
+final double countTextSize = 12.0;
+
+
+
