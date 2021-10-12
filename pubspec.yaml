@@ -24,14 +24,19 @@ dependencies:
   flutter:
     sdk: flutter
   provider: any
-  connectivity: any
+  connectivity_plus: any
   fluttertoast: any
-  shared_preferences: any
+  # shared_preferences: any
   sqflite: any
   http: any
   webfeed: any
   url_launcher: any
-
+  flutter_secure_storage: any
+  ssl_pinning_plugin: any
+  package_info_plus: any
+  
+  app_access:
+    path: module
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -40,6 +45,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  pedantic: ^1.11.0  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

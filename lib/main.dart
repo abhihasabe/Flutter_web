@@ -9,7 +9,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  static const String title = 'Flutter Inital';
+  static const String title = 'PMTC';
 
   @override
   Widget build(BuildContext context) => ChangeNotifierProvider(
