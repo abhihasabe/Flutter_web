@@ -32,7 +32,10 @@ dependencies:
   webfeed: any
   url_launcher: ^6.0.12
   flutter_secure_storage: ^5.0.0-beta.5
-
+  ssl_pinning_plugin: ^2.0.0
+  
+  app_access:
+    path: module
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -41,6 +44,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  pedantic: ^1.11.0  
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
