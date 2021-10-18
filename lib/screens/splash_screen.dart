@@ -1,9 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:news_app/animation/nav_slide_fade.dart';
 import 'package:news_app/route/route.dart' as route;
 
-import 'dashboard_screen.dart';
+import 'dashboard/ui/dashboard_screen.dart';
 
 class Splash extends StatefulWidget {
   @override
@@ -21,7 +20,7 @@ class _Splash extends State {
     // TODO: implement initState
     super.initState();
     Timer(Duration(seconds: 3),
-        () => Navigator.popAndPushNamed(context, route.homePage));
+        () => Navigator.pushNamed(context, route.homePage));
   }
 
   @override
