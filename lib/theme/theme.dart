@@ -5,7 +5,7 @@ import 'colors.dart';
 class MyThemes {
   static ThemeData baseLight = ThemeData.light();
   static ThemeData baseDark = ThemeData.dark();
-
+  static const double FontTitle = 22.0;
   static final darkTheme = ThemeData(
     primarySwatch: Colors.red,
     primaryColor: primaryDarkColor,
@@ -49,8 +49,8 @@ class MyThemes {
     indicatorColor: indicatorColor,
     // buttonColor: buttonColor,
     hintColor: hintColor,
-    highlightColor: highlightColor,
-    hoverColor: hoverColor,
+    // highlightColor: highlightColor,
+    // hoverColor: hoverColor,
     focusColor: focusColorDarkColor,
     disabledColor: disabledColor,
     cardColor: cardColor,
