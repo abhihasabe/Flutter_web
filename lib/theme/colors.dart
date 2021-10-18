@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-final Color primaryColor = Colors.white;
+final Color primaryColor = Colors.red;
 final Color primaryDarkColor = Colors.black;
 
 final Color backgroundColor = Color(0xffF1F5FB);
@@ -15,13 +15,13 @@ final Color indicatorDarkColor = Color(0xff0E1D36);
 final Color buttonColor = Colors.white;
 final Color buttonDarkColor = Color(0xff3B3B3B);
 
-final Color hintColor = Colors.white;
+final Color hintColor = Colors.grey;
 final Color hintDarkColor = Color(0xff280C0B);
 
-final Color highlightColor = Color(0xffFCE192);
+// final Color highlightColor = Color(0xffFCE192);
 final Color highlightDarkColor = Color(0xff372901);
 
-final Color hoverColor = Color(0xff4285F4);
+// final Color hoverColor = Color(0xff4285F4);
 final Color hoverColorDarkColor = Color(0xff3A3A3B);
 
 final Color focusColor = Color(0xffA8DAB5);
