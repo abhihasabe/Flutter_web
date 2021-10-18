@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -6,6 +7,9 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/services.dart';
+import 'package:news_app/route/route.dart' as route;
+import 'package:news_app/screens/PreSales/ui/create_enquiry.dart';
+import 'package:news_app/screens/PreSales/ui/display_enquiry.dart';
 import 'package:news_app/screens/PreSales/widgets/presale_mob_card.dart';
 import 'package:news_app/theme/colors.dart';
 import 'package:news_app/theme/dimens.dart';
@@ -111,12 +115,24 @@ class _PreSaleScreenState extends State<PreSaleScreen> with TickerProviderStateM
                           onChanged: (String txt) {
                           }),
                     ),
-                    getListView(),
+                    getListView()
                   ],
                 ),
               ],
             ),
           ),
+           floatingActionButton: Visibility(
+          child: Container(
+            height: 50,
+            child: FloatingActionButton(
+                onPressed: () {
+                  Navigator.push(context,  MaterialPageRoute(
+                      builder: (context) =>CreateEnquiry()));
+                },
+                child: Icon(Icons.playlist_add,color: Colors.white),
+                backgroundColor: accentColor),
+          ),
+        ),
         ),
       ),
 
@@ -326,20 +342,25 @@ class _PreSaleScreenState extends State<PreSaleScreen> with TickerProviderStateM
                             left: 20, right: 20, top: 0, bottom: 0),
                         child: InkWell(
                           onTap: () {
+                            Navigator.push(context,  MaterialPageRoute(
+                                builder: (context) =>DisplayEnquiry()));
                           },
-                          child: Container(
-                            child: Stack(
-                              children: <Widget>[
-                                Column(
-                                  mainAxisAlignment:
-                                  MainAxisAlignment.start,
-                                  crossAxisAlignment:
-                                  CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    MobCard(),
-                                  ],
-                                ),
-                              ],
+                          child: Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: Container(
+                              child: Stack(
+                                children: <Widget>[
+                                  Column(
+                                    mainAxisAlignment:
+                                    MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      MobCard(),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -351,6 +372,7 @@ class _PreSaleScreenState extends State<PreSaleScreen> with TickerProviderStateM
         ),
 
       ),
+
     );
   }
 

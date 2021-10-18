@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/route/route.dart';
+import 'package:news_app/screens/PreSales/ui/presale_screen.dart';
 import 'package:news_app/utils/connection.helper.dart';
 import 'package:news_app/utils/dialog.helper.dart';
 import 'package:news_app/widgets/button.dart';
@@ -8,7 +9,6 @@ import 'package:news_app/widgets/snackbar.dart';
 import 'package:news_app/route/route.dart' as route;
 import 'package:news_app/widgets/toolbar.dart';
 
-import 'PreSales/ui/presale_screen.dart';
 
 class Dashboard extends StatefulWidget {
   @override

@@ -18,10 +18,10 @@ final Color buttonDarkColor = Color(0xff3B3B3B);
 final Color hintColor = Colors.grey;
 final Color hintDarkColor = Color(0xff280C0B);
 
-final Color highlightColor = Color(0xffFCE192);
+// final Color highlightColor = Color(0xffFCE192);
 final Color highlightDarkColor = Color(0xff372901);
 
-final Color hoverColor = Color(0xff4285F4);
+// final Color hoverColor = Color(0xff4285F4);
 final Color hoverColorDarkColor = Color(0xff3A3A3B);
 
 final Color focusColor = Color(0xffA8DAB5);
