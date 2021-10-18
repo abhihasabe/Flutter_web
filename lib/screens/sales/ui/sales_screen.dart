@@ -23,13 +23,12 @@ class _Dashboard extends State {
     // TODO: implement build
     return AppScaffold(
       key: key,
-      pageTitle: "PMTC",
+      pageTitle: "Sales",
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-              child: Text("App Data",
-                  style: Theme.of(context).textTheme.bodyText1)),
+              child: Text("App Data", style: Theme.of(context).textTheme.bodyText1)),
           Center(
             child: ButtonWidget(
               label: "Go to Login Page ",

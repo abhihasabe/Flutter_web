@@ -23,7 +23,7 @@ class _Dashboard extends State {
     // TODO: implement build
     return AppScaffold(
       key: key,
-      pageTitle: "PMTC",
+      pageTitle: "Report",
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
