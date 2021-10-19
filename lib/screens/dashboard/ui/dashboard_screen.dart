@@ -31,9 +31,7 @@ class _Dashboard extends State {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
-              child: Text("App Data",
-                  style: Theme.of(context).textTheme.bodyText1)),
+          Center(child: Text("App Data", style: Theme.of(context).textTheme.bodyText1)),
           Center(
             child: ButtonWidget(
               label: "Go to Login Page ",
