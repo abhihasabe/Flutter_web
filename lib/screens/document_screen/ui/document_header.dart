@@ -62,22 +62,20 @@ class _DocumentScreenHeaderState extends State<DocumentScreenHeader> {
     size = MediaQuery.of(context).size;
     return Container(
       height: 100,
-      child: Expanded(
-        child: ListView(
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          children: [
-            ...tabs.map((e) => headerTab(e, tabs.indexOf(e))).toList(),
-            // Spacer(),
-            SizedBox(
-              width: MediaQuery.of(context).size.width / 6,
-            ),
-            DocumentUserCard(),
-            SizedBox(
-              width: 10,
-            )
-          ],
-        ),
+      child: ListView(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        children: [
+          ...tabs.map((e) => headerTab(e, tabs.indexOf(e))).toList(),
+          // Spacer(),
+          SizedBox(
+            width: MediaQuery.of(context).size.width / 6,
+          ),
+          DocumentUserCard(),
+          SizedBox(
+            width: 10,
+          )
+        ],
       ),
     );
   }
