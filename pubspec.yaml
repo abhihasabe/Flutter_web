@@ -34,7 +34,7 @@ dependencies:
   flutter_secure_storage: any
   ssl_pinning_plugin: any
   package_info_plus: any
-  
+
   app_access:
     path: module
 
