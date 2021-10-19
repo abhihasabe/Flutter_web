@@ -2,8 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:news_app/route/route.dart' as route;
 
-import 'dashboard/ui/dashboard_screen.dart';
-
 class Splash extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
