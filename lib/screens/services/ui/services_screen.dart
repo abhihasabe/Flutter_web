@@ -7,15 +7,15 @@ import 'package:news_app/widgets/change_theme_button_widget.dart';
 import 'package:news_app/widgets/snackbar.dart';
 import 'package:news_app/widgets/toolbar.dart';
 
-class Dashboard extends StatefulWidget {
+class Service extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return _Dashboard();
+    return _Service();
   }
 }
 
-class _Dashboard extends State {
+class _Service extends State {
   GlobalKey<ScaffoldState> key = GlobalKey();
 
   @override

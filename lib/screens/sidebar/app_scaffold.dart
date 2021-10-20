@@ -16,21 +16,13 @@ class AppScaffold extends StatelessWidget {
     return Row(
       children: [
         if (!displayMobileLayout)
-          const AppDrawer(
-            permanentlyDisplay: true,
-          ),
+          const AppDrawer(permanentlyDisplay: true),
         Expanded(
           child: Scaffold(
             appBar: AppBar(
               // when the app isn't displaying the mobile version of app, hide the menu button that is used to open the navigation drawer
-              automaticallyImplyLeading: displayMobileLayout,
-              title: Text(pageTitle!),
-            ),
-            drawer: displayMobileLayout
-                ? const AppDrawer(
-                    permanentlyDisplay: false,
-                  )
-                : null,
+              automaticallyImplyLeading: displayMobileLayout),
+            drawer: displayMobileLayout ? const AppDrawer(permanentlyDisplay: false) : null,
             body: body,
           ),
         )

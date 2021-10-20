@@ -11,6 +11,7 @@ import 'package:news_app/route/route.dart' as route;
 import 'package:news_app/screens/PreSales/ui/create_enquiry.dart';
 import 'package:news_app/screens/PreSales/ui/display_enquiry.dart';
 import 'package:news_app/screens/PreSales/widgets/presale_mob_card.dart';
+import 'package:news_app/screens/sidebar/app_scaffold.dart';
 import 'package:news_app/theme/colors.dart';
 import 'package:news_app/theme/dimens.dart';
 import 'package:news_app/theme/theme.dart';
@@ -65,72 +66,61 @@ class _SaleScreenState extends State<SaleScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: WillPopScope(
-        onWillPop: _onBackPressed,
-        child: Scaffold(
-          key: _scaffoldKey,
-          body: Container(
-            // decoration: BoxDecoration(
-            //   image: DecorationImage(
-            //     image: AssetImage('images/background.png'),
-            //     fit: BoxFit.cover,
-            //   ),
-            // ),
-            child: Stack(
-              children: <Widget>[
-                Column(
-                  children: [
-                    getAppBarUI(),
-                    getMainViewUI(),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 12.0, right: 12.0),
-                      child: TextField(
-                          decoration: InputDecoration(
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey),
-                            ),
-                            suffixIcon: IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.search, color: Colors.black),
-                            ),
-                            border: InputBorder.none,
-                            filled: false,
-                            hintText: 'Search Enquiry',
-                            contentPadding: const EdgeInsets.only(
-                              left: 16,
-                              right: 20,
-                              top: 16,
-                              bottom: 0,
-                            ),
-                          ),
-                          onChanged: (String txt) {}),
-                    ),
-                    getListView()
-                  ],
+    return AppScaffold(
+      key: _scaffoldKey,
+      body: Container(
+        child: Stack(
+          children: <Widget>[
+            Column(
+              children: [
+                getAppBarUI(),
+                getMainViewUI(),
+                Padding(
+                  padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+                  child: TextField(
+                      decoration: InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey),
+                        ),
+                        suffixIcon: IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.search, color: Colors.black),
+                        ),
+                        border: InputBorder.none,
+                        filled: false,
+                        hintText: 'Search Enquiry',
+                        contentPadding: const EdgeInsets.only(
+                          left: 16,
+                          right: 20,
+                          top: 16,
+                          bottom: 0,
+                        ),
+                      ),
+                      onChanged: (String txt) {}),
                 ),
+                getListView()
               ],
             ),
-          ),
-          floatingActionButton: Visibility(
-            child: Container(
-              height: 50,
-              child: FloatingActionButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => CreateEnquiry()));
-                  },
-                  child: Icon(Icons.playlist_add, color: Colors.white),
-                  backgroundColor: accentColor),
-            ),
-          ),
+          ],
         ),
       ),
+      /*floatingActionButton: Visibility(
+        child: Container(
+          height: 50,
+          child: FloatingActionButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => CreateEnquiry()));
+              },
+              child: Icon(Icons.playlist_add, color: Colors.white),
+              backgroundColor: accentColor),
+        ),
+      ),*/
     );
   }
 

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/route/route.dart' as route;
 
 /// The navigation drawer for the app.
 /// This listens to changes in the route to update which page is currently been shown
 class AppDrawer extends StatefulWidget {
-  const AppDrawer({@required this.permanentlyDisplay, Key? key})
-      : super(key: key);
+
+  const AppDrawer({@required this.permanentlyDisplay, Key? key}) : super(key: key);
 
   final bool? permanentlyDisplay;
 
@@ -39,7 +40,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   leading: const Icon(Icons.home),
                   title: Text("Dashboard"),
                   onTap: () async {
-                    //await _navigateTo(context, RouteNames.home);
+                    await Navigator.pushNamed(context, route.homePage);
                   },
                   //selected: _selectedRoute == RouteNames.home,
                 ),
@@ -47,7 +48,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   leading: const Icon(Icons.photo_library),
                   title:  Text("Pre Sales"),
                   onTap: () async {
-                    //await _navigateTo(context, RouteNames.gallery);
+                    await Navigator.pushNamed(context, route.preSalePage);
                   },
                   //selected: _selectedRoute == RouteNames.gallery,
                 ),
@@ -55,7 +56,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   leading: const Icon(Icons.slideshow),
                   title: Text("Sales"),
                   onTap: () async {
-                    //await _navigateTo(context, RouteNames.slideshow);
+                    await Navigator.pushNamed(context, route.salesPage);
                   },
                   //selected: _selectedRoute == RouteNames.slideshow,
                 ),
@@ -64,7 +65,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   leading: const Icon(Icons.settings),
                   title: Text("Services"),
                   onTap: () async {
-                    //await _navigateTo(context, RouteNames.settings);
+                    await Navigator.pushNamed(context, route.homePage);
                   },
                   //selected: _selectedRoute == RouteNames.settings,
                 ),
@@ -72,7 +73,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   leading: const Icon(Icons.home),
                   title: Text("Documents"),
                   onTap: () async {
-                    //await _navigateTo(context, RouteNames.home);
+                    await Navigator.pushNamed(context, route.document);
                   },
                   //selected: _selectedRoute == RouteNames.home,
                 ),
@@ -80,7 +81,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   leading: const Icon(Icons.photo_library),
                   title:  Text("Help Desk"),
                   onTap: () async {
-                    //await _navigateTo(context, RouteNames.gallery);
+                    await Navigator.pushNamed(context, route.homePage);
                   },
                   //selected: _selectedRoute == RouteNames.gallery,
                 ),
@@ -88,7 +89,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   leading: const Icon(Icons.slideshow),
                   title: Text("Reports"),
                   onTap: () async {
-                    //await _navigateTo(context, RouteNames.slideshow);
+                    await Navigator.pushNamed(context, route.homePage);
                   },
                   //selected: _selectedRoute == RouteNames.slideshow,
                 ),
@@ -97,7 +98,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   leading: const Icon(Icons.settings),
                   title: Text("Accounts"),
                   onTap: () async {
-                    //await _navigateTo(context, RouteNames.settings);
+                    await Navigator.pushNamed(context, route.homePage);
                   },
                   //selected: _selectedRoute == RouteNames.settings,
                 ),

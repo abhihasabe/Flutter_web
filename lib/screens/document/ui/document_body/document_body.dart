@@ -1,10 +1,9 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:news_app/screens/document_screen/common/document_date_picker.dart';
-import 'package:news_app/screens/document_screen/ui/components/document_auto_completer_widget.dart';
-import 'package:news_app/screens/document_screen/ui/components/document_button.dart';
-import 'package:news_app/screens/document_screen/ui/components/document_dropdown_widget.dart';
+import 'package:news_app/utils/date_picker.dart';
+import 'package:news_app/screens/document/ui/components/document_auto_completer_widget.dart';
+import 'package:news_app/screens/document/ui/components/document_button.dart';
+import 'package:news_app/screens/document/ui/components/document_dropdown_widget.dart';
 import 'package:webfeed/domain/media/media.dart';
 
 class DocumentScreenSubHeader extends StatefulWidget {
