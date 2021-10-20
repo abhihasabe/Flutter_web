@@ -8,21 +8,22 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:news_app/theme/colors.dart';
+import 'package:news_app/theme/dimens.dart';
 import 'package:news_app/theme/theme.dart';
 
 
-class DisplayEnquiry extends StatefulWidget {
+class EnquiryDetailWeb extends StatefulWidget {
   // final int leadId;
 
-  // DisplayEnquiry({
+  // EnquiryDetailWeb({
   //   Key key,
   //   this.leadId,
   // }) : super(key: key);
   @override
-  _DisplayEnquiryState createState() => _DisplayEnquiryState();
+  _EnquiryDetailWebState createState() => _EnquiryDetailWebState();
 }
 
-class _DisplayEnquiryState extends State<DisplayEnquiry>
+class _EnquiryDetailWebState extends State<EnquiryDetailWeb>
     with TickerProviderStateMixin {
 
 
@@ -74,6 +75,8 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
 
   // leadDetailsResponse leadDetailsList;
 
+  final TextEditingController numberController = new TextEditingController();
+  final TextEditingController dateController = new TextEditingController();
   final TextEditingController firstnameController = new TextEditingController();
   final TextEditingController lastnameController = new TextEditingController();
   final TextEditingController mobileController = new TextEditingController();
@@ -94,7 +97,6 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
   final TextEditingController provienceController = new TextEditingController();
   final TextEditingController cityController = new TextEditingController();
   final TextEditingController placeController = new TextEditingController();
-  final TextEditingController dateController = new TextEditingController();
   final TextEditingController expPurDateController =
   new TextEditingController();
   final TextEditingController nextVisitDateController = new TextEditingController();
@@ -161,7 +163,15 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
 
     cityList.clear();
 
-
+    firstnameController.text='John.Deo';
+    mobileController.text='77866866868';
+    emailController.text='paxbat@gmail.com';
+    genderController.text='Male';
+    numberController.text='DTHJ345788';
+    dateController.text='7 sept 2021';
+    modelController.text='peugeot';
+    productController.text='New peugeot';
+    variantController.text='Peugeot 125 cc';
     super.initState();
   }
 
@@ -180,27 +190,29 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
       child: Scaffold(
         key: _scaffoldKey,
 //          backgroundColor: AppTheme.background,
-        body: Container(
-          // decoration: BoxDecoration(
-          //   image: DecorationImage(
-          //     image: AssetImage('images/background.png'),
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
-          child: Form(
-            autovalidateMode: _autoValidate,
-            key: _formKey,
-            child: Column(
-              children: <Widget>[
-                getAppBarUI(),
-                getMainViewUI(),
-                SizedBox(
-                  height: MediaQuery
-                      .of(context)
-                      .padding
-                      .bottom,
-                )
-              ],
+        body: SafeArea(
+          child: Container(
+            // decoration: BoxDecoration(
+            //   image: DecorationImage(
+            //     image: AssetImage('images/background.png'),
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
+            child: Form(
+              autovalidateMode: _autoValidate,
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  getAppBarUI(),
+                  getMainViewUI(),
+                  SizedBox(
+                    height: MediaQuery
+                        .of(context)
+                        .padding
+                        .bottom,
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -281,188 +293,349 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
 
                       Column(
                         children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10, top: 18),
+                                  child: new TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
+                                    readOnly: true,
+                                    enabled: false,
+                                    textCapitalization: TextCapitalization.words,
+                                    maxLines: 1,
+                                    maxLength: 20,
+                                    buildCounter: (BuildContext context,
+                                        {int ?currentLength,
+                                          int ?maxLength,
+                                          bool ?isFocused}) =>
+                                    null,
+                                    controller: firstnameController,
+                                    decoration: InputDecoration(
+                                      // border: OutlineInputBorder(
+                                      //   borderSide: BorderSide(
+                                      //     color: Colors.grey, width: 1.0,),
+                                      // ),
+                                      // focusedBorder: OutlineInputBorder(
+                                      //   borderSide: BorderSide(
+                                      //       color: Colors.black54, width: 1.0),
+                                      // ),
+                                      suffixIcon: Padding(
+                                        padding: EdgeInsets.all(0.0),
+                                      ),
+                                      labelStyle: TextStyle(height: 0.5,
+                                        color: const Color(0xff8c8c8c),
+                                      ),
+                                      labelText: 'Name',contentPadding: const EdgeInsets.all(6.0),
+
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10, top: 18),
+                                  child: new TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
+                                    readOnly: true,
+                                    enabled: false,
+                                    textCapitalization: TextCapitalization.words,
+                                    maxLines: 1,
+                                    maxLength: 20,
+                                    buildCounter: (BuildContext context,
+                                        {int ?currentLength,
+                                          int ?maxLength,
+                                          bool ?isFocused}) =>
+                                    null,
+                                    controller: firstnameController,
+                                    decoration: InputDecoration(
+                                      // border: OutlineInputBorder(
+                                      //   borderSide: BorderSide(
+                                      //     color: Colors.grey, width: 1.0,),
+                                      // ),
+                                      // focusedBorder: OutlineInputBorder(
+                                      //   borderSide: BorderSide(
+                                      //       color: Colors.black54, width: 1.0),
+                                      // ),
+                                      suffixIcon: Padding(
+                                        padding: EdgeInsets.all(0.0),
+                                      ),
+                                      labelStyle: TextStyle(height: 0.5,
+                                        color: const Color(0xff8c8c8c),
+                                      ),
+                                      labelText: 'Name',contentPadding: const EdgeInsets.all(6.0),
+
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10,top:18),
+                                  child: TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
+                                    maxLength: 10,
+                                    readOnly: true,
+                                    enabled: false,
+                                    buildCounter: (BuildContext context,
+                                        {int ?currentLength,
+                                          int ?maxLength,
+                                          bool ?isFocused}) =>
+                                    null,
+                                    controller: mobileController,
+                                    decoration: new InputDecoration(
+                                      // border: OutlineInputBorder(),
+                                      // border: OutlineInputBorder(
+                                      //   borderSide: BorderSide(
+                                      //       color: Colors.grey, width: 1.0),
+                                      // ),
+                                      //
+                                      // focusedBorder: OutlineInputBorder(
+                                      //   borderSide: BorderSide(
+                                      //       color: Colors.black54, width: 1.0),
+                                      // ),
+                                      suffixIcon: Padding(
+                                        padding: EdgeInsets.all(0.0),
+                                      ),
+                                      labelText: 'Mobile Number',alignLabelWithHint: true,
+
+                                      labelStyle: TextStyle(height: 0.5,
+                                        color: const Color(0xff8c8c8c),
+                                      ),
+                                    ),
+                                    onChanged: (value)
+                                    {
+                                      setState(() {
+                                        isLayoutVisible=false;
+                                        isvalidButton=true;
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10,top:18),
+                                  child: new TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
+                                    maxLines: 1,
+                                    maxLength: 30,
+                                    readOnly: true,
+                                    enabled: false,
+                                    enableInteractiveSelection: false,
+                                    controller: emailController,
+                                    buildCounter: (BuildContext context,
+                                        {int ?currentLength,
+                                          int ?maxLength,
+                                          bool ?isFocused}) =>
+                                    null,
+                                    decoration: InputDecoration(
+                                      // border: OutlineInputBorder(
+                                      //   borderSide: BorderSide(
+                                      //     color: Colors.grey, width: 1.0,),
+                                      // ),
+                                      // focusedBorder: OutlineInputBorder(
+                                      //   borderSide: BorderSide(
+                                      //       color: Colors.black54, width: 1.0),
+                                      // ),
+                                      suffixIcon: Padding(
+                                        padding: EdgeInsets.all(0.0),
+                                      ),
+                                      labelText: 'Email ID',
+                                      labelStyle: TextStyle(height: 0.5,
+                                        color: const Color(0xff8c8c8c),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10,top:18),
+                                  child: TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
+                                    readOnly: true,
+                                    enabled: false,
+                                    decoration: InputDecoration(
+//                                       border: OutlineInputBorder(
+//                                         borderSide: BorderSide(
+//                                           color: Colors.grey, width: 1.0,),
+//                                       ),
+//                                       focusedBorder: OutlineInputBorder(
+//                                         borderSide: BorderSide(
+//                                             color: Colors.black54, width: 1.0),
+//                                       ),
+                                      labelText: 'Gender',
+                                      labelStyle: TextStyle(height: 0.5,
+                                        color: const Color(0xff8c8c8c),
+                                      ),
+                                    ),
+                                    controller: genderController,
+                                    validator: (String ?value) {
+                                      if (value!.isEmpty) {
+                                        return 'Please Select Gender';
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10, top: 18),
+                                  child: new TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
+                                    readOnly: true,
+                                    enabled: false,
+                                    textCapitalization: TextCapitalization.words,
+                                    maxLines: 1,
+                                    maxLength: 20,
+                                    buildCounter: (BuildContext context,
+                                        {int ?currentLength,
+                                          int ?maxLength,
+                                          bool ?isFocused}) =>
+                                    null,
+                                    controller: numberController,
+                                    decoration: InputDecoration(
+                                      // border: OutlineInputBorder(
+                                      //   borderSide: BorderSide(
+                                      //     color: Colors.grey, width: 1.0,),
+                                      // ),
+                                      // focusedBorder: OutlineInputBorder(
+                                      //   borderSide: BorderSide(
+                                      //       color: Colors.black54, width: 1.0),
+                                      // ),
+                                      suffixIcon: Padding(
+                                        padding: EdgeInsets.all(0.0),
+                                      ),
+                                      labelStyle: TextStyle(height: 0.5,
+                                        color: const Color(0xff8c8c8c),
+                                      ),
+                                      labelText: 'No',contentPadding: const EdgeInsets.all(6.0),
+
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10, top: 18),
+                                  child: new TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
+                                    readOnly: true,
+                                    enabled: false,
+                                    textCapitalization: TextCapitalization.words,
+                                    maxLines: 1,
+                                    maxLength: 20,
+                                    buildCounter: (BuildContext context,
+                                        {int ?currentLength,
+                                          int ?maxLength,
+                                          bool ?isFocused}) =>
+                                    null,
+                                    controller: dateController,
+                                    decoration: InputDecoration(
+                                      // border: OutlineInputBorder(
+                                      //   borderSide: BorderSide(
+                                      //     color: Colors.grey, width: 1.0,),
+                                      // ),
+                                      // focusedBorder: OutlineInputBorder(
+                                      //   borderSide: BorderSide(
+                                      //       color: Colors.black54, width: 1.0),
+                                      // ),
+                                      suffixIcon: Padding(
+                                        padding: EdgeInsets.all(0.0),
+                                      ),
+                                      labelStyle: TextStyle(height: 0.5,
+                                        color: const Color(0xff8c8c8c),
+                                      ),
+                                      labelText: 'Date',contentPadding: const EdgeInsets.all(6.0),
+
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10),
+                                  child: TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
+                                    readOnly: true,
+                                    enabled: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Product',
+                                    ),
+                                    controller: productController,
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10),
+                                  child: TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
+                                    readOnly: true,
+                                    enabled: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Model',
+                                    ),
+                                    controller: modelController,
+                                    validator: (String ?value) {
+                                      if (value!.isEmpty) {
+                                        return 'Please Select Model';
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10),
+                                  child: TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
+                                    readOnly: true,
+                                    enabled: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'Variant',
+                                    ),
+                                    controller: variantController,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                           Container(
                             padding:
                             const EdgeInsets.only(
-                                left: 20, right: 20, bottom: 10, top: 8),
+                                left: 20, right: 20, bottom: 10,top:18),
                             child: new TextFormField(
-                              readOnly: true,
-                              enabled: false,
-                              textCapitalization: TextCapitalization.words,
-                              maxLines: 1,
-                              maxLength: 20,
-                              buildCounter: (BuildContext context,
-                                  {int ?currentLength,
-                                    int ?maxLength,
-                                    bool ?isFocused}) =>
-                              null,
-//                      controller: _textFieldController1comment,
-                              inputFormatters: [
-                                FilteringTextInputFormatter.allow(
-                                    RegExp("[a-zA-Z0-9/_-]"))
-                              ],
-                              controller: firstnameController,
-                              validator: (String ?value) {
-                                if (value!.isEmpty) {
-                                  return 'Name cannot be empty';
-                                }
-                              },
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.grey, width: 1.0,),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.black54, width: 1.0),
-                                ),
-                                suffixIcon: Padding(
-                                  padding: EdgeInsets.all(0.0),
-                                ),
-                                labelText: 'Name',
-                                labelStyle: TextStyle(
-                                  color: const Color(0xff8c8c8c),
-                                ),
-                              ),
-                            ),
-                          ),
-
-
-                          Container(
-                            padding:
-                            const EdgeInsets.only(
-                                left: 20, right: 20, bottom: 10),
-                            child: TextFormField(
-                              maxLength: 10,
-                              readOnly: true,
-                              enabled: false,
-                              buildCounter: (BuildContext context,
-                                  {int ?currentLength,
-                                    int ?maxLength,
-                                    bool ?isFocused}) =>
-                              null,
-                              controller: mobileController,
-                              validator:(String ?value){
-                                if (value!.length < 10)
-                                  return 'Please enter valid mobile number';
-                                else
-                                  return null;
-                              },
-                              inputFormatters: [
-                                FilteringTextInputFormatter.allow(
-                                    RegExp("[0-9]"))
-                              ],
-                              keyboardType: TextInputType.number,
-                              decoration: new InputDecoration(
-                                // border: OutlineInputBorder(),
-                                border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.grey, width: 1.0),
-                                ),
-
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.black54, width: 1.0),
-                                ),
-                                suffixIcon: Padding(
-                                  padding: EdgeInsets.all(0.0),
-                                ),
-                                labelText: 'Mobile Number',
-
-                                labelStyle: TextStyle(
-                                  color: const Color(0xff8c8c8c),
-                                ),
-                              ),
-                              onChanged: (value)
-                              {
-                                setState(() {
-                                  isLayoutVisible=false;
-                                  isvalidButton=true;
-                                });
-                              },
-                            ),
-                          ),
-                          Container(
-                            padding:
-                            const EdgeInsets.only(
-                              left: 20, right: 20, bottom: 10,),
-                            child: new TextFormField(
-                              maxLines: 1,
-                              maxLength: 30,
-                              readOnly: true,
-                                enabled: false,
-                              enableInteractiveSelection: false,
-                              controller: emailController,
-                              buildCounter: (BuildContext context,
-                                  {int ?currentLength,
-                                    int ?maxLength,
-                                    bool ?isFocused}) =>
-                              null,
-                              validator: (String ?value) {
-//                          Pattern pattern =
-//                              r'^(([^()[\]\\.,:\s@\"]+(\.[^<>()[\]\\."]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-                                RegExp regex = new RegExp(
-                                    r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
-                                if (!(regex.hasMatch(value!))) {
-                                  return "Please enter valid Email ID";
-                                } else {
-                                  return null;
-                                }
-                              },
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.grey, width: 1.0,),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.black54, width: 1.0),
-                                ),
-                                suffixIcon: Padding(
-                                  padding: EdgeInsets.all(0.0),
-                                ),
-                                labelText: 'Email ID',
-                                labelStyle: TextStyle(
-                                  color: const Color(0xff8c8c8c),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            padding:
-                            const EdgeInsets.only(
-                                left: 20, right: 20, bottom: 10),
-                            child: TextFormField(
-                              readOnly: true,
-                              enabled: false,
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: Colors.grey, width: 1.0,),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.black54, width: 1.0),
-                                ),
-//                isDense: false,.
-                                suffixIcon: Icon(Icons.keyboard_arrow_down),
-                                labelText: 'Gender',
-                              ),
-                              controller: genderController,
-                              validator: (String ?value) {
-                                if (value!.isEmpty) {
-                                  return 'Please Select Gender';
-                                } else {
-                                  return null;
-                                }
-                              },
-                            ),
-                          ),
-                          Container(
-                            padding:
-                            const EdgeInsets.only(
-                                left: 20, right: 20, bottom: 10),
-                            child: new TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
                               maxLines: null,
                               readOnly: true,
                               enabled: false,
@@ -493,7 +666,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                   padding: EdgeInsets.all(0.0),
                                 ),
                                 labelText: 'Address',
-                                labelStyle: TextStyle(
+                                labelStyle: TextStyle(height: 0.5,
                                   color: const Color(0xff8c8c8c),
                                 ),
                               ),
@@ -502,8 +675,9 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                           Container(
                             padding:
                             const EdgeInsets.only(
-                                left: 20, right: 20, bottom: 10),
+                                left: 20, right: 20, bottom: 10,top:18),
                             child: TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
                               readOnly: true,
                               enabled: false,
                               decoration: InputDecoration(
@@ -530,6 +704,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                             const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10),
                             child: TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
                                 readOnly: false,
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
@@ -551,123 +726,14 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                           ),
 
 
-                          // New Model UI
-                          Column(
-                            children: [
-                              Container(
-                                padding:
-                                const EdgeInsets.only(
-                                    left: 20, right: 20, bottom: 10),
-                                child: TextFormField(
-                                  readOnly: true,
-                                  enabled: false,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Colors.grey, width: 1.0,),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.black54, width: 1.0),
-                                    ),
-//                isDense: false,
-                                    suffixIcon: Icon(
-                                        Icons.keyboard_arrow_down),
-                                    labelText: 'Product',
-                                  ),
-                                  controller: productController,
-                                  validator: (String ?value) {
-                                    if (value!.isEmpty) {
-                                      return 'Please Select product';
-                                    } else {
-                                      return null;
-                                    }
-                                  },
-                                  onTap: () {
 
-                                  },
-                                ),
-                              ),
-                              Visibility(
-                                visible: isModelVisible,
-                                child: Container(
-                                  padding: const EdgeInsets.only(
-                                      left: 20, right: 20, bottom: 10),
-                                  child: TextFormField(
-                                    readOnly: true,
-                                    enabled: false,
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Colors.grey, width: 1.0,),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.black54,
-                                            width: 1.0),
-                                      ),
-//                isDense: false,
-                                      suffixIcon: Icon(
-                                          Icons.keyboard_arrow_down),
-                                      labelText: 'Model',
-                                    ),
-                                    controller: modelController,
-                                    validator: (String ?value) {
-                                      if (value!.isEmpty) {
-                                        return 'Please Select Model';
-                                      } else {
-                                        return null;
-                                      }
-                                    },
-                                    onTap: () {
-
-
-                                    },
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                padding: const EdgeInsets.only(
-                                    left: 20, right: 20, bottom: 10),
-                                child: TextFormField(
-                                  readOnly: true,
-                                  enabled: false,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Colors.grey, width: 1.0,),
-                                    ),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.black54,
-                                          width: 1.0),
-                                    ),
-//                isDense: false,
-                                    suffixIcon: Icon(
-                                        Icons.keyboard_arrow_down),
-                                    labelText: 'Variant',
-                                  ),
-                                  controller: variantController,
-                                  validator: (String ?value) {
-                                    if (value!.isEmpty) {
-                                      return 'Please Select Variant';
-                                    } else {
-                                      return null;
-                                    }
-                                  },
-                                  onTap: () {
-
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
 
                           Container(
                             padding:
                             const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10),
                             child: TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
                               readOnly: true,
                               enabled: false,
                               decoration: InputDecoration(
@@ -700,8 +766,9 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                             padding: const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10),
                             child: TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
                               readOnly: true,
- enabled: false,
+                              enabled: false,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -733,6 +800,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                             const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10),
                             child: TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
 //                                            enabled: false,
                               readOnly: true,
                               enabled: false,
@@ -776,6 +844,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                               padding: const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10,),
                               child: TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
 //                                            enabled: false,
                                   readOnly: true,
                                   enabled: false,
@@ -813,6 +882,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                             padding: const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10),
                             child: TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
                               readOnly: true,
                               enabled: false,
                               decoration: InputDecoration(
@@ -845,6 +915,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                             const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10),
                             child: new TextFormField(
+                                    style: TextStyle(fontSize: fontTextSmall),
                               keyboardType: TextInputType.multiline,
                               minLines: 1,
                               //Normal textInputField will be displayed

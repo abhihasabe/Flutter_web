@@ -35,7 +35,8 @@ dependencies:
   ssl_pinning_plugin: any
   package_info_plus: any
   cached_network_image: ^3.1.0
-  
+
+
   app_access:
     path: module
 
