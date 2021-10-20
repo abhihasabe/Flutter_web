@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:news_app/screens/PreSales/ui/create_enquiry.dart';
 import 'package:news_app/screens/helpdesk/ui/ticket_details.dart';
 import 'package:news_app/screens/helpdesk/widget/helpdesk_mob_card.dart';
+import 'package:news_app/screens/helpdesk/widget/helpdesk_web_card.dart';
 import 'package:news_app/theme/colors.dart';
 import 'package:news_app/theme/dimens.dart';
 import 'package:news_app/theme/theme.dart';
@@ -207,7 +208,6 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
             ),
           ],
         ),
-
       ],
     );
   }
@@ -326,7 +326,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                                 builder: (context) =>TicketDetails()));
                           },
                           child: Padding(
-                            padding: const EdgeInsets.all(18.0),
+                            padding: const EdgeInsets.all(6.0),
                             child: Container(
                               child: Stack(
                                 children: <Widget>[
@@ -336,7 +336,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                                     crossAxisAlignment:
                                     CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      hdMobCard(),
+                                      hdWebCard(),
                                     ],
                                   ),
                                 ],

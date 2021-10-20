@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
 import 'dart:convert';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class ParseJSON {
@@ -32,16 +34,19 @@ class ParseJSON {
   }
 }
 
+
 class hdWebCard extends StatefulWidget {
   const hdWebCard({Key? key}) : super(key: key);
 
   @override
-  CustomListTileView createState() => CustomListTileView();
+  _hdWebCardState createState() => _hdWebCardState();
 }
 
-class CustomListTileView extends State<hdWebCard> {
-  final String apiURL = 'https://api.npoint.io/da3af968d3a7deb18f12';
+class _hdWebCardState extends State<hdWebCard> with TickerProviderStateMixin {
+  AnimationController? animationController;
+  Animation<dynamic>? animation;
 
+  final String apiURL = 'https://api.npoint.io/da3af968d3a7deb18f12';
   Future<List<ParseJSON>> fetchJSON() async {
     var jsonResponse = await http.get(Uri.parse(apiURL));
 
@@ -59,12 +64,27 @@ class CustomListTileView extends State<hdWebCard> {
     }
   }
 
+
+  void initState() {
+    print('initState');
+    setState(() {
+      print('SetState');
+    });
+    animationController = AnimationController(
+        duration: const Duration(milliseconds: 1000), vsync: this);
+    super.initState();
+//    getHotEnqDetails('', pageIndex);
+  }
+
   @override
+  dispose() {
+    animationController!.dispose(); // you need this
+    super.dispose();
+  }
+
+
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ListView in Flutter'),
-      ),
       body: FutureBuilder<List<ParseJSON>>(
         future: fetchJSON(),
         builder: (context, data) {
