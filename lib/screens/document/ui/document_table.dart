@@ -12,7 +12,7 @@ class _DocumentTableScreenState extends State<DocumentTableScreen> {
   @override
   Widget build(BuildContext context) {
     return PaginatedDataTable(columns: [
-      DataColumn(label: Text('DocumentId')),
+      DataColumn(label: Text('Document Id')),
       DataColumn(label: Text('Subject')),
       DataColumn(label: Text('Category')),
       DataColumn(label: Text('Published')),
