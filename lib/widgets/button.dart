@@ -51,7 +51,7 @@ class ButtonWidget extends StatelessWidget {
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
               // background color
-              primary: Theme.of(context).buttonColor,
+              primary: colors.buttonColor,
               padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 45.0),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)),
@@ -60,7 +60,7 @@ class ButtonWidget extends StatelessWidget {
           child: TextWidget(
               text: label?.toUpperCase() ?? "Label",
               small: true,
-              color: Theme.of(context).buttonTheme.colorScheme?.secondary)),
+              color: Colors.white)),
     );
   }
 }

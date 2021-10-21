@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/theme/dimens.dart';
 
 class MobCard extends StatefulWidget {
   const MobCard({Key? key}) : super(key: key);
@@ -62,7 +63,7 @@ class _MobCardState extends State<MobCard> with TickerProviderStateMixin{
                               color: Colors.black,
 //                                                          fontWeight: FontWeight.w600,
                               fontSize:
-                              18),
+                              fontTextSmall),
                         ),
                       ),
                     ],
@@ -91,7 +92,7 @@ class _MobCardState extends State<MobCard> with TickerProviderStateMixin{
                               style: TextStyle(
                                   color:
                                   Colors.grey,
-                                  fontSize: 14),
+                                  fontSize: fontTextSmall),
                             ),
                           ),
                         ],
@@ -112,7 +113,7 @@ class _MobCardState extends State<MobCard> with TickerProviderStateMixin{
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           fontSize:
-                          18,
+                          fontTextSmall,
 //                                                        fontWeight: FontWeight.w400,
                           color: Colors.red),
                     ),
@@ -187,17 +188,11 @@ class _MobCardState extends State<MobCard> with TickerProviderStateMixin{
             ),
             Padding(
               padding:
-              const EdgeInsets.only(top: 5),
+              const EdgeInsets.only(top: 8),
               child: Row(
                 children: [
                   GestureDetector(
                     onTap: () {
-                      // if (enquiryList[i]
-                      //     .mobileNumber !=
-                      //     null) {
-                      //   _service.call(enquiryList[i]
-                      //       .mobileNumber);
-                      // }
                     },
                     child: Container(
                       decoration: BoxDecoration(

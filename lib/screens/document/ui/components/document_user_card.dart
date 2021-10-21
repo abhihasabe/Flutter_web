@@ -16,8 +16,8 @@ class _DocumentUserCardState extends State<DocumentUserCard> {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: 80,
-      width: 250,
+      height: 60,
+      width: 230,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
       ),
@@ -85,10 +85,6 @@ class _DocumentUserCardState extends State<DocumentUserCard> {
               children: [
                 Row(
                   children: [
-                    Icon(
-                      Icons.notifications_outlined,
-                      color: Colors.black,
-                    ),
                     SizedBox(width: 10),
                     Icon(
                       Icons.logout,

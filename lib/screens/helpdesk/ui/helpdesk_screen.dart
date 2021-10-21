@@ -8,9 +8,9 @@ import 'dart:ui';
 
 import 'package:flutter/services.dart';
 import 'package:news_app/route/route.dart' as route;
-import 'package:news_app/screens/PreSales/ui/EnquiryDetails/EnquiryDetailWeb.dart';
-import 'package:news_app/screens/PreSales/ui/create_enquiry.dart';
-import 'package:news_app/screens/PreSales/ui/display_enquiry.dart';
+import 'package:news_app/screens/PreSales/ui/EnquiryDetails/enquiry_details_presale.dart';
+import 'package:news_app/screens/PreSales/ui/create_enquiry_presale.dart';
+
 import 'package:news_app/screens/helpdesk/ui/ticket_details.dart';
 import 'package:news_app/screens/helpdesk/widget/helpdesk_mob_card.dart';
 import 'package:news_app/screens/helpdesk/widget/helpdesk_web_card.dart';
@@ -107,7 +107,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
               child: !kIsWeb?FloatingActionButton(
                   onPressed: () {
                     Navigator.push(context,  MaterialPageRoute(
-                        builder: (context) =>CreateEnquiry()));
+                        builder: (context) =>CreateEnquiryPresale()));
                   },
                   child: Icon(Icons.playlist_add,color: Colors.white),
                   backgroundColor: accentColor):Container(),
@@ -254,7 +254,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                         label: "Create New",
                         onPress: () async {
                           Navigator.push(context,  MaterialPageRoute(
-                              builder: (context) =>CreateEnquiry()));
+                              builder: (context) =>CreateEnquiryPresale()));
                         },
                       ),
                     ],
@@ -448,7 +448,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                             if(kIsWeb)
                             {
                               Navigator.push(context,  MaterialPageRoute(
-                                  builder: (context) =>EnquiryDetailWeb()));
+                                  builder: (context) =>EnquiryDetailPresale()));
                             }
                             else
                             {
