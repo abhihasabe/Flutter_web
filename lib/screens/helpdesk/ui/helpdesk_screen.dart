@@ -230,7 +230,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                           ),
                           border: InputBorder.none,
                           filled: false,
-                          hintText: 'Search Enquiry',
+                          hintText: 'Search',
                           contentPadding: const EdgeInsets.only(
                             left: 16,
                             right: 20,
@@ -251,7 +251,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       ButtonWidget(
-                        label: "Create Enquiry",
+                        label: "Create New",
                         onPress: () async {
                           Navigator.push(context,  MaterialPageRoute(
                               builder: (context) =>CreateEnquiry()));
