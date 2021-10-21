@@ -19,20 +19,15 @@ class _DocumentScreenState extends State<DocumentScreen> {
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
     log('${size.width}');
-    return Theme(
-      data: ThemeData(),
-      child: Scaffold(
-          body: size.width > 640
-              ? SafeArea(
-                  child: Row(
-                  children: [
-                    MediaQuery.of(context).size.width > 1100
-                        ? AppDrawer(permanentlyDisplay: size.width > 640)
-                        : SizedBox.shrink(),
-                    Expanded(flex: 5, child: DocumentMainScreen())
-                  ],
-                ))
-              : DocumentScreenMob()),
-    );
+    return Scaffold(
+        body: size.width > 640
+            ? SafeArea(
+                child: Row(
+                children: [
+                  MediaQuery.of(context).size.width > 1100 ? AppDrawer(permanentlyDisplay: size.width > 640) : SizedBox.shrink(),
+                  Expanded(flex: 5, child: DocumentMainScreen())
+                ],
+              ))
+            : DocumentScreenMob());
   }
 }

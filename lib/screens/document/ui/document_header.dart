@@ -62,7 +62,7 @@ class _DocumentScreenHeaderState extends State<DocumentScreenHeader> {
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
     return Container(
-      height: 100,
+      height: 60,
       child: ListView(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
