@@ -23,7 +23,7 @@ class SalesCustomButton extends StatelessWidget {
       ),
       onPressed: () => clickFunction,
       child: Container(
-        height: 45,
+        height: 40,
         width: 180,
         alignment: Alignment.center,
         child:

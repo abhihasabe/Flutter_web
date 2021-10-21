@@ -37,7 +37,7 @@ class _SalesScreenHeaderState extends State<SalesScreenHeader> {
                   )
                 : SizedBox.shrink(),
             SizedBox(
-              width: (size.width / 50) / 2,
+              width: (size.width / 50)/3,
             ),
             Text(
               tabName,
@@ -68,13 +68,14 @@ class _SalesScreenHeaderState extends State<SalesScreenHeader> {
         scrollDirection: Axis.horizontal,
         children: [
           ...tabs.map((e) => headerTab(e, tabs.indexOf(e))).toList(),
+          // Spacer(),
           SizedBox(
-            width: MediaQuery.of(context).size.width / 4,
-          ),
-          SizedBox(
-            width: 100,
+            width: MediaQuery.of(context).size.width / 6,
           ),
           DocumentUserCard(),
+          SizedBox(
+            width: 10,
+          )
         ],
       ),
     );
