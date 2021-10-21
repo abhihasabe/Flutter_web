@@ -94,31 +94,29 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin{
                     padding:
                     const EdgeInsets.only(
                         top: 3.0),
-                    child: Expanded(
-                      child: Row(
-                        crossAxisAlignment:
-                        CrossAxisAlignment.end,
-                        mainAxisAlignment:
-                        MainAxisAlignment.end,
-                        children: <Widget>[
-                          Padding(
-                            padding:
-                            const EdgeInsets
-                                .only(
-                                left: 0.0,
-                                top: 0),
-                            child: Text(
-                              'Today 1:52 PM',
-                              textAlign:
-                              TextAlign.left,
-                              style: TextStyle(
-                                  color:
-                                  Colors.black,
-                                  fontSize: 12),
-                            ),
+                    child: Row(
+                      crossAxisAlignment:
+                      CrossAxisAlignment.end,
+                      mainAxisAlignment:
+                      MainAxisAlignment.end,
+                      children: <Widget>[
+                        Padding(
+                          padding:
+                          const EdgeInsets
+                              .only(
+                              left: 0.0,
+                              top: 0),
+                          child: Text(
+                            'Today 1:52 PM',
+                            textAlign:
+                            TextAlign.left,
+                            style: TextStyle(
+                                color:
+                                Colors.black,
+                                fontSize: 12),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -218,88 +216,86 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin{
               ),
             ),
 
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(0.0),
-                    child: Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Icon(Icons.person_outline,color: Colors.black,size: 15,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(0.0),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Icon(Icons.person_outline,color: Colors.black,size: 15,),
+                      ),
+                      Padding(
+                        padding:
+                        const EdgeInsets.only(
+                            left: 0.0, top: 2),
+                        child: Text(
+                          'JOHN DEO',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12),
                         ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.only(
-                              left: 0.0, top: 2),
-                          child: Text(
-                            'JOHN DEO',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 12),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
+                ),
 
-                  Padding(
-                    padding: const EdgeInsets.only(left:200.0),
-                    child: Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Icon(Icons.phone_android,color: Colors.black,size: 15,),
+                Padding(
+                  padding: const EdgeInsets.only(left:200.0),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Icon(Icons.phone_android,color: Colors.black,size: 15,),
+                      ),
+                      Padding(
+                        padding:
+                        const EdgeInsets.only(
+                            left: 0.0, top: 4),
+                        child: Text(
+                          '8605233456',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 13),
                         ),
-                        Padding(
-                          padding:
-                          const EdgeInsets.only(
-                              left: 0.0, top: 4),
-                          child: Text(
-                            '8605233456',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 13),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding:
-                    const EdgeInsets.only(left: 50,
-                        top: 3.0),
-                    child: Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Icon(Icons.forward_to_inbox,color: Colors.black,size: 15,),
+                ),
+                Padding(
+                  padding:
+                  const EdgeInsets.only(left: 50,
+                      top: 3.0),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Icon(Icons.forward_to_inbox,color: Colors.black,size: 15,),
+                      ),
+                      Padding(
+                        padding:
+                        const EdgeInsets
+                            .only(
+                            left: 0.0,
+                            top: 0),
+                        child: Text(
+                          'paxbat@gmail.com',
+                          textAlign:
+                          TextAlign.left,
+                          style: TextStyle(
+                              color:
+                              Colors.grey,
+                              fontSize: 14),
                         ),
-                        Padding(
-                          padding:
-                          const EdgeInsets
-                              .only(
-                              left: 0.0,
-                              top: 0),
-                          child: Text(
-                            'paxbat@gmail.com',
-                            textAlign:
-                            TextAlign.left,
-                            style: TextStyle(
-                                color:
-                                Colors.grey,
-                                fontSize: 14),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
 
           ],
