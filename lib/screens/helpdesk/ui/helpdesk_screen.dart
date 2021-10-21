@@ -412,7 +412,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
       child: Container(
         child: ListView.builder(
           itemCount: 5,
-          padding: const EdgeInsets.only(top: 8),
+          padding: const EdgeInsets.only(top: 0),
           scrollDirection: Axis.vertical,
           itemBuilder: (BuildContext context, int i) {
 //          final int count = enqList.length > 10 ? 10 : enqList.length;
@@ -448,7 +448,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
 
                           },
                           child: Padding(
-                            padding: const EdgeInsets.all(18.0),
+                            padding: const EdgeInsets.all(8.0),
                             child: Container(
                               child: Stack(
                                 children: <Widget>[
