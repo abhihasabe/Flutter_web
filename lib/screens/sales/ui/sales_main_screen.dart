@@ -29,14 +29,12 @@ class _SalesMainScreenState extends State<SalesMainScreen> {
                     height: 20,
                   ),
                   ...order_list.map((e) => WebCard()).toList(),
-                  // !displayMobileLayout! ? WebCard() : MobCard(),
                 ],
               )
             : ListView(
                 controller: ScrollController(),
                 shrinkWrap: true,
                 children: [
-                  SalesScreenHeader(),
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: Container(
@@ -69,7 +67,7 @@ class _SalesMainScreenState extends State<SalesMainScreen> {
                       ),
                     ),
                   ),
-                  // SalesScreenSubHeader(),
+                  SalesScreenSubHeader(),
                   SizedBox(
                     height: 20,
                   ),

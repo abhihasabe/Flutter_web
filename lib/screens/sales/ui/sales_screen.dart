@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app/screens/sales/ui/components/sales_screen_mob_app_drawer.dart';
+import 'package:news_app/screens/sidebar/app_drawer.dart';
 import 'sales_main_screen.dart';
 
 class SaleScreen extends StatefulWidget {
@@ -11,42 +13,25 @@ class SaleScreen extends StatefulWidget {
 }
 
 class _SaleScreenState extends State<SaleScreen> with TickerProviderStateMixin {
+  late Size size;
   @override
   Widget build(BuildContext context) {
+    size = MediaQuery.of(context).size;
     return Scaffold(
       body: Theme(
         data: ThemeData(),
-        child: SafeArea(
-          child: Row(
-            children: [
-              MediaQuery.of(context).size.width > 768
-                  ? Expanded(
-                      flex: 1,
-                      child: Drawer(
-                        child: Container(
-                          color: Colors.black,
-                          child: SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                  height: 100,
-                                  width: 100,
-                                  child: Text(
-                                    'Dashboard',
-                                    style: const TextStyle(color: Colors.white),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
-                  : SizedBox.shrink(),
-              Expanded(flex: 5, child: SalesMainScreen())
-            ],
-          ),
-        ),
+        child: Scaffold(
+            body: size.width > 640
+                ? SafeArea(
+                    child: Row(
+                    children: [
+                      MediaQuery.of(context).size.width > 1100
+                          ? AppDrawer(permanentlyDisplay: size.width > 640)
+                          : SizedBox.shrink(),
+                      Expanded(flex: 5, child: SalesMainScreen())
+                    ],
+                  ))
+                : SalesScreenMobAppDrawer()),
       ),
     );
   }
