@@ -23,8 +23,7 @@ class MyThemes {
     //appBarTheme: _appBarTheme("darkTheme"),
     iconTheme: IconThemeData(color: iconDarkColor, opacity: 0.8),
     textTheme: _customTextTheme(baseDark.textTheme, textDarkColor, "darkTheme"),
-    primaryTextTheme:
-        _customTextTheme(baseDark.primaryTextTheme, textDarkColor, "darkTheme"),
+    primaryTextTheme: _customTextTheme(baseDark.primaryTextTheme, textDarkColor, "darkTheme"),
     // accentTextTheme:
     //     _customTextTheme(baseDark.accentTextTheme, textDarkColor, "darkTheme"),
     colorScheme: ColorScheme.dark(),
