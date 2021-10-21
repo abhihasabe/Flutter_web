@@ -4,8 +4,8 @@ import 'package:news_app/route/route.dart' as route;
 /// The navigation drawer for the app.
 /// This listens to changes in the route to update which page is currently been shown
 class AppDrawer extends StatefulWidget {
-
-  const AppDrawer({@required this.permanentlyDisplay, Key? key}) : super(key: key);
+  const AppDrawer({@required this.permanentlyDisplay, Key? key})
+      : super(key: key);
 
   final bool? permanentlyDisplay;
 
@@ -35,7 +35,11 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
             child: ListView(
               padding: EdgeInsets.zero,
               children: [
-                Icon(Icons.circle, color: Colors.deepOrange, size: 89, ),
+                Icon(
+                  Icons.circle,
+                  color: Colors.deepOrange,
+                  size: 89,
+                ),
                 ListTile(
                   leading: const Icon(Icons.home),
                   title: Text("Dashboard"),
@@ -46,7 +50,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                 ),
                 ListTile(
                   leading: const Icon(Icons.photo_library),
-                  title:  Text("Pre Sales"),
+                  title: Text("Pre Sales"),
                   onTap: () async {
                     await Navigator.pushNamed(context, route.preSalePage);
                   },
@@ -79,7 +83,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                 ),
                 ListTile(
                   leading: const Icon(Icons.photo_library),
-                  title:  Text("Help Desk"),
+                  title: Text("Help Desk"),
                   onTap: () async {
                     await Navigator.pushNamed(context, route.homePage);
                   },
@@ -125,7 +129,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
 
   void _updateSelectedRoute() {
     setState(() {
-      _selectedRoute = ModalRoute.of(context)!.settings!.name;
+      _selectedRoute = ModalRoute.of(context)!.settings.name;
     });
   }
 }
