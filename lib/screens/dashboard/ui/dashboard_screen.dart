@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/route/route.dart';
 import 'package:news_app/screens/PreSales/ui/presale_screen.dart';
+import 'package:news_app/screens/helpdesk/ui/helpdesk_screen.dart';
 import 'package:news_app/utils/connection.helper.dart';
 import 'package:news_app/utils/dialog.helper.dart';
 import 'package:news_app/widgets/button.dart';
@@ -40,7 +41,7 @@ class _Dashboard extends State {
               label: "Go to Login Page ",
               onPress: () async {
                 Navigator.push(context,  MaterialPageRoute(
-                    builder: (context) =>PreSaleScreen()));
+                    builder: (context) =>HelpDeskScreen()));
                 // await ConnectionHelper?.hasConnection()==true?
                 // DialogHelper.launchURL("http://www.google.com"):
                 // SnackbarWidget(

@@ -18,7 +18,7 @@ class _Splash extends State {
     // TODO: implement initState
     super.initState();
     Timer(Duration(seconds: 3),
-        () => Navigator.pushNamed(context, route.homePage));
+        () => Navigator.pushNamed(context, route.helpdesk));
   }
 
   @override

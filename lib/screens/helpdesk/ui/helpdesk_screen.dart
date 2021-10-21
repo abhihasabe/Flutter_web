@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/services.dart';
-
+import 'package:news_app/route/route.dart' as route;
+import 'package:news_app/screens/PreSales/ui/EnquiryDetails/EnquiryDetailWeb.dart';
 import 'package:news_app/screens/PreSales/ui/create_enquiry.dart';
+import 'package:news_app/screens/PreSales/ui/display_enquiry.dart';
 import 'package:news_app/screens/helpdesk/ui/ticket_details.dart';
 import 'package:news_app/screens/helpdesk/widget/helpdesk_mob_card.dart';
 import 'package:news_app/screens/helpdesk/widget/helpdesk_web_card.dart';
@@ -15,6 +18,7 @@ import 'package:news_app/theme/colors.dart';
 import 'package:news_app/theme/dimens.dart';
 import 'package:news_app/theme/theme.dart';
 import 'package:news_app/utils/dialog.helper.dart';
+import 'package:news_app/widgets/button.dart';
 
 
 class HelpDeskScreen extends StatefulWidget {
@@ -37,11 +41,14 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
   String? firstName="ss", lastName="ss", role;
   Animation? animation;
   int count = 9;
+  bool? displayMobileLayout;
 
 
   @override
   void initState() {
     // TODO: implement initState
+
+
     SystemChrome.setEnabledSystemUIOverlays(
         [SystemUiOverlay.top, SystemUiOverlay.bottom]);
     animationController = AnimationController(
@@ -55,7 +62,6 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
         CurvedAnimation(
             parent: animationController,
             curve: Interval(0, 0.5, curve: Curves.fastOutSlowIn)));
-
     super.initState();
 
 
@@ -70,6 +76,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
 
   @override
   Widget build(BuildContext context) {
+    displayMobileLayout= MediaQuery.of(context).size.width < 600;
     return Container(
       child: WillPopScope(
         onWillPop: _onBackPressed,
@@ -87,34 +94,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                 Column(
                   children: [
                     getAppBarUI(),
-                    getMainViewUI(),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 12.0, right: 12.0),
-                      child: TextField(
-                          decoration: InputDecoration(
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.grey),
-                            ),
-                            suffixIcon: IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.search,color: Colors.black),
-                            ),
-                            border: InputBorder.none,
-                            filled: false,
-                            hintText: 'Search Enquiry',
-                            contentPadding: const EdgeInsets.only(
-                              left: 16,
-                              right: 20,
-                              top: 16,
-                              bottom: 0,
-                            ),
-                          ),
-                          onChanged: (String txt) {
-                          }),
-                    ),
+                    !displayMobileLayout!?getMainWebUI():getMainViewUI(),
                     getListView()
                   ],
                 ),
@@ -124,13 +104,13 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
           floatingActionButton: Visibility(
             child: Container(
               height: 50,
-              child: FloatingActionButton(
+              child: !kIsWeb?FloatingActionButton(
                   onPressed: () {
                     Navigator.push(context,  MaterialPageRoute(
                         builder: (context) =>CreateEnquiry()));
                   },
                   child: Icon(Icons.playlist_add,color: Colors.white),
-                  backgroundColor: accentColor),
+                  backgroundColor: accentColor):Container(),
             ),
           ),
         ),
@@ -138,6 +118,155 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
 
     );
 
+  }
+
+  Widget getMainWebUI() {
+    return Padding(
+      padding: const EdgeInsets.only(left:50.0),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top:8.0,right: 20,left: 20),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top:4.0,left: 10.0,right: 10),
+                      child: Text("My Tickets",style: TextStyle(color: Colors.grey,fontSize:countTextSize),),
+                    ),
+                    Container(
+                      width: circleWidth,
+                      height: circleHeight,
+                      child: Center(child: Text("06",style: TextStyle(color: Colors.black,fontSize:countTextSize))),
+                      decoration: new BoxDecoration(
+                          border: Border.all(width: 1.0,color: Colors.blue),
+                          borderRadius: new BorderRadius.only(
+                            topLeft: const Radius.circular(10.0),
+                            topRight: const Radius.circular(10.0),
+                            bottomLeft: const Radius.circular(10.0),
+                            bottomRight: const Radius.circular(10.0),
+                          )
+                      ),
+
+                      // color: Color(C)),
+                    ),
+
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top:8.0,right: 20,left: 20),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top:4.0,right: 10),
+                      child: Text("Pending on me",style: TextStyle(color: Colors.grey,fontSize:countTextSize),),
+                    ),
+                    Container(
+                      width: circleWidth,
+                      height: circleHeight,
+                      child: Center(child: Text("06",style: TextStyle(color: Colors.black,fontSize:countTextSize))),
+                      decoration: new BoxDecoration(
+                          border: Border.all(width: 1.0,color: Colors.deepOrange),
+                          borderRadius: new BorderRadius.only(
+                            topLeft: const Radius.circular(10.0),
+                            topRight: const Radius.circular(10.0),
+                            bottomLeft: const Radius.circular(10.0),
+                            bottomRight: const Radius.circular(10.0),
+                          )
+                      ),
+                      // color: Color(C)),
+                    ),
+
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top:8.0,right: 20,left: 20),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top:4.0,right: 10),
+                      child: Text("Resolved",style: TextStyle(color: Colors.grey,fontSize:countTextSize)),
+                    ),
+                    Container(
+                      width: circleWidth,
+                      height: circleHeight,
+                      child: Center(child: Text("06",style: TextStyle(color: Colors.black,fontSize:countTextSize))),
+                      decoration: new BoxDecoration(
+                          border: Border.all(width: 1.0,color: Colors.green),
+                          borderRadius: new BorderRadius.only(
+                            topLeft: const Radius.circular(10.0),
+                            topRight: const Radius.circular(10.0),
+                            bottomLeft: const Radius.circular(10.0),
+                            bottomRight: const Radius.circular(10.0),
+                          )
+                      ),
+                      // color: Color(C)),
+                    ),
+
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left:38.0),
+                child: Container(
+                  width: MediaQuery.of(context).size.width/4,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+                    child: TextField(
+                        decoration: InputDecoration(
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                          suffixIcon: IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.search,color: Colors.black),
+                          ),
+                          border: InputBorder.none,
+                          filled: false,
+                          hintText: 'Search Enquiry',
+                          contentPadding: const EdgeInsets.only(
+                            left: 16,
+                            right: 20,
+                            top: 16,
+                            bottom: 0,
+                          ),
+                        ),
+                        onChanged: (String txt) {
+                        }),
+                  ),
+                ),
+              ),
+              Flexible(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 18.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      ButtonWidget(
+                        label: "Create Enquiry",
+                        onPress: () async {
+                          Navigator.push(context,  MaterialPageRoute(
+                              builder: (context) =>CreateEnquiry()));
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+
+        ],
+      ),
+    );
   }
 
   Widget getMainViewUI() {
@@ -156,7 +285,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                     child: Center(child: Text("06",style: TextStyle(color: Colors.black,fontSize:countTextSize))),
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        border: Border.all(width: 1.0,color: Colors.grey)),
+                        border: Border.all(width: 1.0,color: Colors.blue)),
                     // color: Color(C)),
                   ),
                   Padding(
@@ -177,7 +306,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                     child: Center(child: Text("06",style: TextStyle(color: Colors.black,fontSize:countTextSize))),
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        border: Border.all(width: 1.0,color: Colors.pinkAccent)),
+                        border: Border.all(width: 1.0,color: Colors.deepOrange)),
                     // color: Color(C)),
                   ),
                   Padding(
@@ -196,7 +325,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                     child: Center(child: Text("06",style: TextStyle(color: Colors.black,fontSize:countTextSize))),
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        border: Border.all(width: 1.0,color: Colors.blue)),
+                        border: Border.all(width: 1.0,color: Colors.green)),
                     // color: Color(C)),
                   ),
                   Padding(
@@ -208,6 +337,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
             ),
           ],
         ),
+
       ],
     );
   }
@@ -255,7 +385,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                 fontSize: MyThemes.FontTitle,
               ),
             ),
-            Expanded(
+            /*Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(right: 15.0),
                 child: Column(
@@ -267,9 +397,6 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                       width: 24,
                       child: InkWell(
                         highlightColor: Colors.transparent,
-                        /* borderRadius: const BorderRadius.all(
-                                            Radius.circular(20.0)),*/
-
                         child: Center(
                           child: Icon(
                             Icons.history,
@@ -282,11 +409,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                   ],
                 ),
               ),
-            ),
-//            Container(
-//              width: AppBar().preferredSize.height + 40,
-//              height: AppBar().preferredSize.height,
-//            )
+            ),*/
           ],
         ),
       ),
@@ -322,11 +445,20 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                             left: 20, right: 20, top: 0, bottom: 0),
                         child: InkWell(
                           onTap: () {
-                            Navigator.push(context,  MaterialPageRoute(
-                                builder: (context) =>TicketDetails()));
+                            if(kIsWeb)
+                            {
+                              Navigator.push(context,  MaterialPageRoute(
+                                  builder: (context) =>EnquiryDetailWeb()));
+                            }
+                            else
+                            {
+                              Navigator.push(context,  MaterialPageRoute(
+                                  builder: (context) =>TicketDetails()));
+                            }
+
                           },
                           child: Padding(
-                            padding: const EdgeInsets.all(6.0),
+                            padding: const EdgeInsets.all(18.0),
                             child: Container(
                               child: Stack(
                                 children: <Widget>[
@@ -336,7 +468,9 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                                     crossAxisAlignment:
                                     CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      hdWebCard(),
+                                      !displayMobileLayout!?
+                                      hdWebCard():
+                                      hdMobCard(),
                                     ],
                                   ),
                                 ],
@@ -356,7 +490,8 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
     );
   }
 
-  Future<bool> _onBackPressed() async {
+  Future<bool> _onBackPressed() async
+  {
     await DialogHelper.showScaleAlertBox(
       title: Center(child: Text("Exit!")),
       // IF YOU WANT TO ADD

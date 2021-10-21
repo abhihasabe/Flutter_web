@@ -1,69 +1,19 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-
-class ParseJSON {
-  String? ticket_id;
-  String? ageing;
-  String? subject;
-  String? description;
-  String? modified_date;
-  String? pending_on;
-  String? created;
-
-  ParseJSON(
-      {this.ticket_id,
-        this.ageing,
-        this.subject,
-        this.description,
-        this.modified_date,
-        this.pending_on,
-        this.created});
-
-  factory ParseJSON.fromJson(Map<String, dynamic> json) {
-    return ParseJSON(
-        ticket_id: json['ticket_id'],
-        ageing: json['ageing'],
-        subject: json['subject'],
-        description: json['description'],
-        modified_date: json['modified_date'],
-        pending_on: json['pending_on'],
-        created: json['created']);
-  }
-}
-
+import 'package:news_app/theme/colors.dart';
 
 class hdWebCard extends StatefulWidget {
   const hdWebCard({Key? key}) : super(key: key);
 
   @override
   _hdWebCardState createState() => _hdWebCardState();
+
 }
 
-class _hdWebCardState extends State<hdWebCard> with TickerProviderStateMixin {
-  AnimationController? animationController;
-  Animation<dynamic>? animation;
-
-  final String apiURL = 'https://api.npoint.io/da3af968d3a7deb18f12';
-  Future<List<ParseJSON>> fetchJSON() async {
-    var jsonResponse = await http.get(Uri.parse(apiURL));
-
-    if (jsonResponse.statusCode == 200) {
-      final jsonItems =
-      json.decode(jsonResponse.body).cast<Map<String, dynamic>>();
-
-      List<ParseJSON> tempList = jsonItems.map<ParseJSON>((json) {
-        return ParseJSON.fromJson(json);
-      }).toList();
-
-      return tempList;
-    } else {
-      throw Exception('Failed To Load Data');
-    }
-  }
-
+class _hdWebCardState extends State<hdWebCard> with TickerProviderStateMixin{
+  @override
+  AnimationController ?animationController;
+  Animation<dynamic> ?animation;
 
   void initState() {
     print('initState');
@@ -82,75 +32,173 @@ class _hdWebCardState extends State<hdWebCard> with TickerProviderStateMixin {
     super.dispose();
   }
 
-
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: FutureBuilder<List<ParseJSON>>(
-        future: fetchJSON(),
-        builder: (context, data) {
-          if (data.hasError) {
-            return Center(child: Text("${data.error}"));
-          } else if (data.hasData) {
-            var items = data.data as List<ParseJSON>;
-            return ListView.builder(
-                itemCount: items == null ? 0 : items.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    child: ListTile(
-                      leading: Column(
-                        children: [
-                          const Text("Aging", style: TextStyle(fontSize: 10.0)),
-                          Text(items[index].ageing.toString(),
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontSize: 21.0,
-                              )),
-                        ],
+    return Card(
+      color: Colors.white,
+      elevation: 3,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(7)),
+        child: ListTile(
+          leading: Column(
+            children:[
+              Text("Aging",
+              style:TextStyle(color: Colors.black,
+              fontSize: 13),
+              ),
+              Text("2",style: TextStyle(
+                color: Colors.black,
+                fontSize: 21
+              ),
+              ),
+            ],
+          ),
+        title: Column(
+          mainAxisAlignment:
+          MainAxisAlignment.start,
+          crossAxisAlignment:
+          CrossAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left:4.0),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding:
+                        const EdgeInsets.only(
+                            left: 0.0, top: 4),
+                        child: Text(
+                          'DTH354567',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 13),
+                        ),
                       ),
-                      title: Column(children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              items[index].ticket_id.toString(),
-                            ),
-                            Expanded(
-                              child: Text(
-                                items[index].subject.toString(),
-                              ),
-                            ),
-                            const Text("Modified : "),
-                            Text(items[index].modified_date.toString()),
-                          ],
+                    ],
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.only(left:240.0),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding:
+                        const EdgeInsets.only(
+                            left: 0.0, top: 4),
+                        child: Text(
+                          'Promotion not applied on last order',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 13),
                         ),
-                        const Divider(
-                          height: 20.0,
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Icon(
+                          Icons.picture_as_pdf,color: Colors.red,size: 21,
                         ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const Text("Created : "),
-                            Text(
-                              items[index].created.toString(),
-                            ),
-                            Expanded(
-                              child: Text(items[index].description.toString()),
-                            ),
-                            Text(items[index].pending_on.toString())
-                          ],
+                      ],
+                    )
+                )
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top:4.0),
+              child: new Divider(
+                thickness: 0.5,
+                color: Colors.grey,
+              ),
+            ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left:4.0),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding:
+                        const EdgeInsets.only(
+                            left: 0.0, top: 4),
+                        child: Text(
+                          'Created: Today 1:52 PM',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 13),
                         ),
-                      ]),
+                      ),
+                    ],
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.only(left:180.0),
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding:
+                        const EdgeInsets.only(
+                            left: 2.0, top: 4),
+                        child: Text(
+                          'Modified: Today 01:52 PM',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 13),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding:
+                    const EdgeInsets.only(
+                        top: 3.0),
+                    child: Row(
+                      crossAxisAlignment:
+                      CrossAxisAlignment.end,
+                      mainAxisAlignment:
+                      MainAxisAlignment.end,
+                      children: <Widget>[
+                        Padding(
+                          padding:
+                          const EdgeInsets
+                              .only(
+                              left: 0.0,
+                              top: 0),
+                          child: Text(
+                            'Pending On: Joe Ocean',
+                            textAlign:
+                            TextAlign.left,
+                            style: TextStyle(
+                                color:
+                                Colors.black,
+                                fontSize: 13),
+                          ),
+                        ),
+                      ],
                     ),
-                  );
-                });
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
+                  ),
+                ),
+              ],
+            ),
+
+          ],
+        ),
       ),
     );
   }

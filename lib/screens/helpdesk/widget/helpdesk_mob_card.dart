@@ -69,7 +69,7 @@ class _hdMobCardState extends State<hdMobCard> with TickerProviderStateMixin {
                           Padding(
                             padding: const EdgeInsets.only(left: 0.0, top: 0),
                             child: Text(
-                              'Modified: Today 1:52 PM',
+                              'Today 1:52 PM',
                               textAlign: TextAlign.left,
                               style:
                                   TextStyle(color: Colors.grey, fontSize: 14),
@@ -84,8 +84,7 @@ class _hdMobCardState extends State<hdMobCard> with TickerProviderStateMixin {
             ),
             Row(
               children: [
-                Flexible(
-                  child: Padding(
+                Padding(
                     padding: const EdgeInsets.only(left: 0.0, top: 3),
                     child: Text(
                       'Promotion not applied on last order',
@@ -96,8 +95,26 @@ class _hdMobCardState extends State<hdMobCard> with TickerProviderStateMixin {
                           color: Colors.black54),
                     ),
                   ),
-                ),
+
               ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 3.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 0.0, top: 0),
+                    child: Text(
+                      'Pending on: John Ocen',
+                      textAlign: TextAlign.left,
+                      style:
+                      TextStyle(color: Colors.grey, fontSize: 14),
+                    ),
+                  ),
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(0.0),
@@ -118,28 +135,35 @@ class _hdMobCardState extends State<hdMobCard> with TickerProviderStateMixin {
                       ),
                     ],
                   ),
-                  Flexible(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 3.0),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left: 0.0, top: 0),
-                            child: Text(
-                              'Pending on: John Ocen',
-                              textAlign: TextAlign.left,
-                              style:
-                              TextStyle(color: Colors.grey, fontSize: 14),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
                 ],
               ),
+            ),
+            Row(
+              children: [
+                Padding(
+                    padding: const EdgeInsets.only(left: 0.0, top: 3),
+                    child: Text(
+                      'Aging: 2',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                          fontSize: 14,
+                          //  fontWeight: FontWeight.w400,
+                          color: Colors.black54),
+                    ),
+                  ),
+                Expanded(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Icon(
+                          Icons.picture_as_pdf,color: Colors.red,size: 21,
+                        ),
+                      ],
+                    )
+                )
+
+              ],
             ),
           ],
         ),
