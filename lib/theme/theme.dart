@@ -5,7 +5,7 @@ import 'colors.dart';
 class MyThemes {
   static ThemeData baseLight = ThemeData.light();
   static ThemeData baseDark = ThemeData.dark();
-  static const double FontTitle = 22.0;
+  static const double FontTitle = 18.0;
   static final darkTheme = ThemeData(
     primarySwatch: Colors.red,
     primaryColor: primaryDarkColor,

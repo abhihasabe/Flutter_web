@@ -8,21 +8,22 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:news_app/theme/colors.dart';
+import 'package:news_app/theme/dimens.dart';
 import 'package:news_app/theme/theme.dart';
 
 
-class DisplayEnquiry extends StatefulWidget {
+class CreateEnquiryPresale extends StatefulWidget {
   // final int leadId;
 
-  // DisplayEnquiry({
+  // CreateEnquiryPresale({
   //   Key key,
   //   this.leadId,
   // }) : super(key: key);
   @override
-  _DisplayEnquiryState createState() => _DisplayEnquiryState();
+  _CreateEnquiryPresaleState createState() => _CreateEnquiryPresaleState();
 }
 
-class _DisplayEnquiryState extends State<DisplayEnquiry>
+class _CreateEnquiryPresaleState extends State<CreateEnquiryPresale>
     with TickerProviderStateMixin {
 
 
@@ -130,10 +131,8 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
   bool isProductVisible = true;
   bool isZipInvalid = false;
   bool isLayoutVisible = false;
-  bool isExchangeLayoutVisible = false;
-  bool isNewLayoutVisible = false;
-  bool isvalidButton = true;
-  bool isAnnivarsaryDate = false;
+  bool? displayMobileLayout;
+
 
   bool isNextVisitDateVisible = false;
   DateTime ExpPurDate = DateTime.now();
@@ -174,8 +173,9 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
 
   @override
   Widget build(BuildContext context) {
+    displayMobileLayout= MediaQuery.of(context).size.width < 600;
     // TODO: implement build
-    return Container(
+    return displayMobileLayout!?Container(
 //        color: AppTheme.white,
       child: Scaffold(
         key: _scaffoldKey,
@@ -194,6 +194,37 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
               children: <Widget>[
                 getAppBarUI(),
                 getMainViewUI(),
+                SizedBox(
+                  height: MediaQuery
+                      .of(context)
+                      .padding
+                      .bottom,
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    ):Container(
+//        color: AppTheme.white,
+      child: Scaffold(
+        key: _scaffoldKey,
+//          backgroundColor: AppTheme.background,
+        body: Container(
+          color: Colors.white,
+          // decoration: BoxDecoration(
+          //   image: DecorationImage(
+          //     image: AssetImage('images/background.png'),
+          //     fit: BoxFit.cover,
+          //   ),
+          // ),
+          child: Form(
+            autovalidateMode: _autoValidate,
+            key: _formKey,
+            child: Column(
+              children: <Widget>[
+                getAppBarUI(),
+                getMainWebViewUI(),
                 SizedBox(
                   height: MediaQuery
                       .of(context)
@@ -247,7 +278,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
               ),
             ),
             Text(
-              'Enquiry Details',
+              'Create New',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: MyThemes.FontTitle,
@@ -286,8 +317,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                             const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10, top: 8),
                             child: new TextFormField(
-                              readOnly: true,
-                              enabled: false,
+                                      style: TextStyle(fontSize: fontTextSmall),
                               textCapitalization: TextCapitalization.words,
                               maxLines: 1,
                               maxLength: 20,
@@ -319,23 +349,20 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                 suffixIcon: Padding(
                                   padding: EdgeInsets.all(0.0),
                                 ),
-                                labelText: 'Name',
+                                labelText: 'Name*',
                                 labelStyle: TextStyle(
                                   color: const Color(0xff8c8c8c),
                                 ),
                               ),
                             ),
                           ),
-
-
                           Container(
                             padding:
                             const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10),
                             child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
                               maxLength: 10,
-                              readOnly: true,
-                              enabled: false,
                               buildCounter: (BuildContext context,
                                   {int ?currentLength,
                                     int ?maxLength,
@@ -367,7 +394,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                 suffixIcon: Padding(
                                   padding: EdgeInsets.all(0.0),
                                 ),
-                                labelText: 'Mobile Number',
+                                labelText: 'Mobile Number*',
 
                                 labelStyle: TextStyle(
                                   color: const Color(0xff8c8c8c),
@@ -377,7 +404,6 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                               {
                                 setState(() {
                                   isLayoutVisible=false;
-                                  isvalidButton=true;
                                 });
                               },
                             ),
@@ -387,10 +413,9 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                             const EdgeInsets.only(
                               left: 20, right: 20, bottom: 10,),
                             child: new TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
                               maxLines: 1,
                               maxLength: 30,
-                              readOnly: true,
-                                enabled: false,
                               enableInteractiveSelection: false,
                               controller: emailController,
                               buildCounter: (BuildContext context,
@@ -421,7 +446,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                 suffixIcon: Padding(
                                   padding: EdgeInsets.all(0.0),
                                 ),
-                                labelText: 'Email ID',
+                                labelText: 'Email ID*',
                                 labelStyle: TextStyle(
                                   color: const Color(0xff8c8c8c),
                                 ),
@@ -433,8 +458,8 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                             const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10),
                             child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
                               readOnly: true,
-                              enabled: false,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -446,7 +471,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                 ),
 //                isDense: false,.
                                 suffixIcon: Icon(Icons.keyboard_arrow_down),
-                                labelText: 'Gender',
+                                labelText: 'Gender*',
                               ),
                               controller: genderController,
                               validator: (String ?value) {
@@ -456,6 +481,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                   return null;
                                 }
                               },
+
                             ),
                           ),
                           Container(
@@ -463,16 +489,15 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                             const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10),
                             child: new TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
                               maxLines: null,
-                              readOnly: true,
-                              enabled: false,
                               textCapitalization: TextCapitalization.words,
 
 //                      controller: _textFieldController1comment,
                               inputFormatters: [
                                 FilteringTextInputFormatter.allow(
                                     RegExp(
-                                        "[a-zA-Z 0-9 ():,.!~@#+=&/\$%_'-]"))
+                                        "[a-zA-Z 0-9 ():,.!~@#+=&/\$%_*'-]"))
                               ],
                               controller: addressController,
                               validator: (String ?value) {
@@ -492,20 +517,21 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                 suffixIcon: Padding(
                                   padding: EdgeInsets.all(0.0),
                                 ),
-                                labelText: 'Address',
+                                labelText: 'Address*',
                                 labelStyle: TextStyle(
                                   color: const Color(0xff8c8c8c),
                                 ),
                               ),
                             ),
                           ),
+
                           Container(
                             padding:
                             const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10),
                             child: TextFormField(
-                              readOnly: true,
-                              enabled: false,
+                                      style: TextStyle(fontSize: fontTextSmall),
+                              readOnly: false,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -515,7 +541,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                   borderSide: BorderSide(
                                       color: Colors.black54, width: 1.0),
                                 ),
-                                labelText: 'City',
+                                labelText: 'City*',
                               ),
                               validator: (String ?value) {
                                 if (value!.isEmpty) {
@@ -530,6 +556,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                             const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10),
                             child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
                                 readOnly: false,
                                 decoration: InputDecoration(
                                   border: OutlineInputBorder(
@@ -540,7 +567,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                     borderSide: BorderSide(
                                         color: Colors.black54, width: 1.0),
                                   ),
-                                  labelText: 'Zipcode',
+                                  labelText: 'Zipcode*',
                                 ),
                                 controller: cityController,
                                 validator: (String ?value) {
@@ -559,8 +586,8 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                 const EdgeInsets.only(
                                     left: 20, right: 20, bottom: 10),
                                 child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
                                   readOnly: true,
-                                  enabled: false,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -573,7 +600,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
 //                isDense: false,
                                     suffixIcon: Icon(
                                         Icons.keyboard_arrow_down),
-                                    labelText: 'Product',
+                                    labelText: 'Product*',
                                   ),
                                   controller: productController,
                                   validator: (String ?value) {
@@ -594,8 +621,9 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                   padding: const EdgeInsets.only(
                                       left: 20, right: 20, bottom: 10),
                                   child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
                                     readOnly: true,
-                                    enabled: false,
+                                    enabled: isModelVisible,
                                     decoration: InputDecoration(
                                       border: OutlineInputBorder(
                                         borderSide: BorderSide(
@@ -609,7 +637,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
 //                isDense: false,
                                       suffixIcon: Icon(
                                           Icons.keyboard_arrow_down),
-                                      labelText: 'Model',
+                                      labelText: 'Model*',
                                     ),
                                     controller: modelController,
                                     validator: (String ?value) {
@@ -630,8 +658,8 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                 padding: const EdgeInsets.only(
                                     left: 20, right: 20, bottom: 10),
                                 child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
                                   readOnly: true,
-                                  enabled: false,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -645,7 +673,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
 //                isDense: false,
                                     suffixIcon: Icon(
                                         Icons.keyboard_arrow_down),
-                                    labelText: 'Variant',
+                                    labelText: 'Variant*',
                                   ),
                                   controller: variantController,
                                   validator: (String ?value) {
@@ -668,8 +696,8 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                             const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10),
                             child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
                               readOnly: true,
-                              enabled: false,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -681,7 +709,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                 ),
 //                isDense: false,
                                 suffixIcon: Icon(Icons.keyboard_arrow_down),
-                                labelText: 'Enquiry Source',
+                                labelText: 'Enquiry Source*',
                               ),
                               controller: enquirySourceController,
                               validator: (String ?value) {
@@ -700,8 +728,8 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                             padding: const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10),
                             child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
                               readOnly: true,
- enabled: false,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -712,7 +740,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                       color: Colors.black54, width: 1.0),
                                 ),
                                 suffixIcon: Icon(Icons.keyboard_arrow_down),
-                                labelText: 'Enquiry Sub-Source',
+                                labelText: 'Enquiry Sub-Source*',
                               ),
                               controller: enquirySubSourceController,
                               validator: (String ?value) {
@@ -733,9 +761,9 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                             const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10),
                             child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
 //                                            enabled: false,
                               readOnly: true,
-                              enabled: false,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -776,9 +804,9 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                               padding: const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10,),
                               child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
 //                                            enabled: false,
                                   readOnly: true,
-                                  enabled: false,
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -806,6 +834,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                     return null;
                                   },
                                   onTap: () async {
+
                                   }),
                             ),
                           ),
@@ -813,8 +842,8 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                             padding: const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10),
                             child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
                               readOnly: true,
-                              enabled: false,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -825,7 +854,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                       color: Colors.black54, width: 1.0),
                                 ),
                                 suffixIcon: Icon(Icons.keyboard_arrow_down),
-                                labelText: 'Status',
+                                labelText: 'Status*',
                               ),
                               controller: statusController,
                               validator: (String ?value) {
@@ -845,6 +874,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                             const EdgeInsets.only(
                                 left: 20, right: 20, bottom: 10),
                             child: new TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
                               keyboardType: TextInputType.multiline,
                               minLines: 1,
                               //Normal textInputField will be displayed
@@ -860,7 +890,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                               inputFormatters: [
                                 FilteringTextInputFormatter.allow(
                                     RegExp(
-                                        "[a-zA-Z 0-9 ():,.!~@#+=&/\$%_'-]"))
+                                        "[a-zA-Z 0-9 ():,.!~@#+=&/\$%_*'-]"))
                               ],
                               controller: remarkController,
                               validator: (String ?value) {
@@ -881,7 +911,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                 suffixIcon: Padding(
                                   padding: EdgeInsets.all(0.0),
                                 ),
-                                labelText: 'Remarks',
+                                labelText: 'Remarks*',
                                 labelStyle: TextStyle(
                                   color: const Color(0xff8c8c8c),
                                 ),
@@ -896,23 +926,24 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                 padding: const EdgeInsets.only(
                                     right: 20.0, top: 10, bottom: 20),
                                 child: SizedBox(
-                                  width: 144.0,
-                                  height: 46.0,
+                                  width: 130.0,
+                                  height: 40.0,
                                   child: RaisedButton(
                                     color: accentColor,
-                                    textColor: Colors.white,
+                                    textColor: buttonColor,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: new BorderRadius.circular(
                                           36.0),
                                     ),
                                     child: Text(
-                                      "Replay",
+                                      "SUBMIT",
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
                                           color: Colors.white,
-                                          fontSize: 16.0),
+                                          fontSize: 13.0),
                                     ),
                                     onPressed: () {
+                                      validateLeadDetails();
                                     },
                                   ),
                                 ),
@@ -931,6 +962,652 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
         },
       );
     }
+    /*else {
+        return Expanded(child: Center(child: Text('No Data Found')));
+      }*/
+//    }
+    else {
+      return Expanded(child: Center(child: CircularProgressIndicator()));
+    }
+  }
+
+  Widget getMainWebViewUI() {
+    if (!isLoading) {
+//      if (enquirySourceList != null && enquirySourceList.isNotEmpty) {
+      return FutureBuilder<bool>(
+        future: getData(),
+        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+          if (!snapshot.hasData) {
+            return const SizedBox();
+          } else {
+            return Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10, left: 10),
+                child: Container(
+                  child: SingleChildScrollView(
+                    child: Column(children: <Widget>[
+
+                      Column(
+                        children: [
+                          Row(
+                            children: [
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10, top: 8),
+                                  child: new TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
+                                    textCapitalization: TextCapitalization.words,
+                                    maxLines: 1,
+                                    maxLength: 20,
+                                    buildCounter: (BuildContext context,
+                                        {int ?currentLength,
+                                          int ?maxLength,
+                                          bool ?isFocused}) =>
+                                    null,
+//                      controller: _textFieldController1comment,
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.allow(
+                                          RegExp("[a-zA-Z0-9/_-]"))
+                                    ],
+                                    controller: firstnameController,
+                                    validator: (String ?value) {
+                                      if (value!.isEmpty) {
+                                        return 'Name cannot be empty';
+                                      }
+                                    },
+                                    decoration: InputDecoration(
+                                      suffixIcon: Padding(
+                                        padding: EdgeInsets.all(0.0),
+                                      ),
+                                      labelText: 'Name*',
+                                      labelStyle: TextStyle(
+                                        color: const Color(0xff8c8c8c),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10),
+                                  child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
+                                    maxLength: 10,
+                                    buildCounter: (BuildContext context,
+                                        {int ?currentLength,
+                                          int ?maxLength,
+                                          bool ?isFocused}) =>
+                                    null,
+                                    controller: mobileController,
+                                    validator:(String ?value){
+                                      if (value!.length < 10)
+                                        return 'Please enter valid mobile number';
+                                      else
+                                        return null;
+                                    },
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.allow(
+                                          RegExp("[0-9]"))
+                                    ],
+                                    keyboardType: TextInputType.number,
+                                    decoration: new InputDecoration(
+                                      // border: OutlineInputBorder(),
+                                     
+                                      suffixIcon: Padding(
+                                        padding: EdgeInsets.all(0.0),
+                                      ),
+                                      labelText: 'Mobile Number*',
+
+                                      labelStyle: TextStyle(
+                                        color: const Color(0xff8c8c8c),
+                                      ),
+                                    ),
+                                    onChanged: (value)
+                                    {
+                                      setState(() {
+                                        isLayoutVisible=false;
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                    left: 20, right: 20, bottom: 10,),
+                                  child: new TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
+                                    maxLines: 1,
+                                    maxLength: 30,
+                                    enableInteractiveSelection: false,
+                                    controller: emailController,
+                                    buildCounter: (BuildContext context,
+                                        {int ?currentLength,
+                                          int ?maxLength,
+                                          bool ?isFocused}) =>
+                                    null,
+                                    validator: (String ?value) {
+//                          Pattern pattern =
+//                              r'^(([^()[\]\\.,:\s@\"]+(\.[^<>()[\]\\."]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+                                      RegExp regex = new RegExp(
+                                          r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$');
+                                      if (!(regex.hasMatch(value!))) {
+                                        return "Please enter valid Email ID";
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    decoration: InputDecoration(
+                                      suffixIcon: Padding(
+                                        padding: EdgeInsets.all(0.0),
+                                      ),
+                                      labelText: 'Email ID*',
+                                      labelStyle: TextStyle(
+                                        color: const Color(0xff8c8c8c),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10),
+                                  child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
+                                    readOnly: true,
+                                    decoration: InputDecoration(
+                                      suffixIcon: Icon(Icons.keyboard_arrow_down),
+                                      labelText: 'Gender*',
+                                    ),
+                                    controller: genderController,
+                                    validator: (String ?value) {
+                                      if (value!.isEmpty) {
+                                        return 'Please Select Gender';
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    /* onTap: () {
+                                  SelectItemDialog.showModal<String>(
+                                    context,
+                                    label: "Select Gender",
+                                    titleStyle: TextStyle(color: Colors.black),
+                                    showSearchBox: false,
+                                    selectedValue: genderLable,
+                                    items: genderList,
+                                    onChange: (String selected) {
+                                      setState(() {
+                                        genderLable = (selected.isEmpty
+                                            ? 'Select Gender'
+                                            : selected);
+                                        genderController.text = genderLable;
+                                      });
+                                    },
+                                  );
+                                },*/
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10),
+                                  child: new TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
+                                    maxLines: null,
+                                    textCapitalization: TextCapitalization.words,
+
+//                      controller: _textFieldController1comment,
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.allow(
+                                          RegExp(
+                                              "[a-zA-Z 0-9 ():,.!~@#+=&/\$%_*'-]"))
+                                    ],
+                                    controller: addressController,
+                                    validator: (String ?value) {
+                                      if (value!.isEmpty) {
+                                        return 'Address cannot be empty';
+                                      }
+                                    },
+                                    decoration: InputDecoration(
+
+                                      suffixIcon: Padding(
+                                        padding: EdgeInsets.all(0.0),
+                                      ),
+                                      labelText: 'Address*',
+                                      labelStyle: TextStyle(
+                                        color: const Color(0xff8c8c8c),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10),
+                                  child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
+                                    readOnly: false,
+                                    decoration: InputDecoration(
+                                      labelText: 'City*',
+                                    ),
+                                    validator: (String ?value) {
+                                      if (value!.isEmpty) {
+                                        return 'Place cannot be empty';
+                                      }
+                                    },
+                                    controller: placeController,
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10),
+                                  child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
+                                      readOnly: false,
+                                      decoration: InputDecoration(
+                                        labelText: 'Zipcode*',
+                                      ),
+                                      controller: cityController,
+                                      validator: (String ?value) {
+                                        if (value!.isEmpty) {
+                                          return 'zipcode cannot be empty';
+                                        }
+                                      }),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container
+                                  (
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10),
+                                  child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
+                                    readOnly: true,
+                                    decoration: InputDecoration(
+                                      suffixIcon: Icon(
+                                          Icons.keyboard_arrow_down),
+                                      labelText: 'Product*',
+                                    ),
+                                    controller: productController,
+                                    validator: (String ?value) {
+                                      if (value!.isEmpty) {
+                                        return 'Please Select product';
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    onTap: () {
+
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+
+                              Flexible(
+                                child: Container(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10),
+                                  child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
+                                    readOnly: true,
+                                    enabled: isModelVisible,
+                                    decoration: InputDecoration(
+                                      suffixIcon: Icon(
+                                          Icons.keyboard_arrow_down),
+                                      labelText: 'Model*',
+                                    ),
+                                    controller: modelController,
+                                    validator: (String ?value) {
+                                      if (value!.isEmpty) {
+                                        return 'Please Select Model';
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    onTap: () {
+
+
+                                    },
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10),
+                                  child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
+                                    readOnly: true,
+                                    decoration: InputDecoration(
+                                      suffixIcon: Icon(
+                                          Icons.keyboard_arrow_down),
+                                      labelText: 'Variant*',
+                                    ),
+                                    controller: variantController,
+                                    validator: (String ?value) {
+                                      if (value!.isEmpty) {
+                                        return 'Please Select Variant';
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    onTap: () {
+
+                                    },
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10),
+                                  child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
+                                    readOnly: true,
+                                    decoration: InputDecoration(
+                                      suffixIcon: Icon(Icons.keyboard_arrow_down),
+                                      labelText: 'Enquiry Source*',
+                                    ),
+                                    controller: enquirySourceController,
+                                    validator: (String ?value) {
+                                      if (value!.isEmpty) {
+                                        return 'Please Select Enquiry Source';
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    onTap: () {
+
+                                    },
+                                  ),
+                                ),
+                              ),
+                              Flexible(child: Container(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10),
+                                  child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
+                                    readOnly: true,
+                                    decoration: InputDecoration(
+                                      suffixIcon: Icon(Icons.keyboard_arrow_down),
+                                      labelText: 'Enquiry Sub-Source*',
+                                    ),
+                                    controller: enquirySubSourceController,
+                                    validator: (String ?value) {
+                                      if (value!.isEmpty) {
+                                        return 'Please Select Enquiry Sub-Source';
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    onTap: () {
+
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10),
+                                  child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
+//                                            enabled: false,
+                                    readOnly: true,
+                                    decoration: InputDecoration(
+                                      suffixIcon: Icon(Icons.keyboard_arrow_down),
+                                      labelText: "Expected Purchase*",
+                                      labelStyle: TextStyle(),
+                                    ),
+                                    controller: expPurDateController,
+                                    validator: (String ?value) {
+                                      if (value!.isEmpty) {
+                                        return 'Select date';
+                                      }
+                                      return null;
+                                    },
+                                    onTap: () async {
+                                      setState(() {
+                                        isNextVisitDateVisible=true;
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding: const EdgeInsets.only(
+                                    left: 20, right: 20, bottom: 10,),
+                                  child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
+//                                            enabled: false,
+                                      readOnly: true,
+                                      decoration: InputDecoration(
+                                        suffixIcon: Padding(
+                                          padding: EdgeInsets.all(0.0),
+                                          child: Icon(
+                                            Icons.date_range,
+                                            color: Colors.black54,
+                                          ),
+                                        ),
+                                        labelText: "Next Visit date*",
+                                        labelStyle: TextStyle(),
+                                      ),
+                                      controller: nextVisitDateController,
+                                      validator: (String ?value) {
+                                        if (value!.isEmpty) {
+                                          return 'Select date';
+                                        }
+                                        return null;
+                                      },
+                                      onTap: () async {
+                                        /*  DateTime selectedDate = DateTime.now();
+                                    final DateTime picked = await showRoundedDatePicker(
+                                      context: context,
+                                      theme: ThemeData(
+                                        colorScheme: ColorScheme.light(
+                                            primary: AppTheme.primaryColor),
+                                        buttonTheme: ButtonThemeData(
+                                            textTheme: ButtonTextTheme
+                                                .primary),
+                                        primaryColor: Colors.white70,
+                                        accentColor: AppTheme.primaryColor,
+                                        textTheme: TextTheme(
+                                          bodyText2:
+                                          TextStyle(
+                                              color: AppTheme.primaryColor),
+                                          caption:
+                                          TextStyle(
+                                              color: AppTheme.primaryColor),
+                                        ),
+                                        disabledColor: Colors.grey,
+                                        accentTextTheme: TextTheme(
+                                          bodyText2:
+                                          TextStyle(
+                                              color: AppTheme.primaryColor),
+                                        ),
+                                      ),
+                                      // initialDate: DateTime(DateTime.now().year,
+                                      //     DateTime.now().month, DateTime.now().day + 1),
+                                      // firstDate: DateTime(DateTime.now().year,
+                                      //     DateTime.now().month, DateTime.now().day + 1),
+                                      // lastDate: DateTime(3000),
+
+                                      initialDate: NextVisitDate,
+                                      firstDate: NextVisitDate,
+                                      lastDate: ExpPurDate,
+
+                                      borderRadius: 16,
+                                    );
+                                    if (picked != null &&
+                                        picked != selectedDate ||
+                                        picked == selectedDate) {
+                                      setState(() {
+                                        selectedDate = picked;
+                                        final dateFormatter5 = DateFormat(
+                                            'yyyy-MM-dd');
+                                        String picked1 = dateFormatter5
+                                            .format(picked);
+                                        print(picked1);
+                                        nextVisitDateController.value =
+                                            TextEditingValue(
+                                                text: picked1.toString()
+                                                    .split(" ")[0]);
+                                      });
+                                    } else {}
+                                  }*/
+                                      }),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding: const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10),
+                                  child: TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
+                                    readOnly: true,
+                                    decoration: InputDecoration(
+
+                                      suffixIcon: Icon(Icons.keyboard_arrow_down),
+                                      labelText: 'Status*',
+                                    ),
+                                    controller: statusController,
+                                    validator: (String ?value) {
+                                      if (value!.isEmpty) {
+                                        return 'Please Select status';
+                                      } else {
+                                        return null;
+                                      }
+                                    },
+                                    onTap: () {
+
+                                    },
+                                  ),
+                                ),
+                              ),
+                              Flexible(
+                                child: Container(
+                                  padding:
+                                  const EdgeInsets.only(
+                                      left: 20, right: 20, bottom: 10),
+                                  child: new TextFormField(
+                                      style: TextStyle(fontSize: fontTextSmall),
+                                    keyboardType: TextInputType.multiline,
+                                    minLines: 1,
+                                    //Normal textInputField will be displayed
+                                    maxLines: null,
+                                    textInputAction: TextInputAction.next,
+                                    maxLength: 400,
+                                    enableInteractiveSelection: false,
+                                    buildCounter: (BuildContext context,
+                                        {int ?currentLength,
+                                          int ?maxLength,
+                                          bool ?isFocused}) =>
+                                    null,
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.allow(
+                                          RegExp(
+                                              "[a-zA-Z 0-9 ():,.!~@#+=&/\$%_*'-]"))
+                                    ],
+                                    controller: remarkController,
+                                    validator: (String ?value) {
+                                      if (value!.isEmpty) {
+                                        return 'Remarks cannot be empty';
+                                      }
+                                    },
+                                    decoration: InputDecoration(
+                                      suffixIcon: Padding(
+                                        padding: EdgeInsets.all(0.0),
+                                      ),
+                                      labelText: 'Remarks*',
+                                      labelStyle: TextStyle(
+                                        color: const Color(0xff8c8c8c),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    right: 20.0, top: 10, bottom: 20),
+                                child: SizedBox(
+                                  width: 130.0,
+                                  height: 40.0,
+                                  child: RaisedButton(
+                                    color: accentColor,
+                                    textColor: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: new BorderRadius.circular(
+                                          36.0),
+                                    ),
+                                    child: Text(
+                                      "SUBMIT",
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 14.0),
+                                    ),
+                                    onPressed: () {
+                                      validateLeadDetails();
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+
+                    ]),
+                  ),
+                ),
+              ),
+            );
+          }
+        },
+      );
+    }
+    /*else {
+        return Expanded(child: Center(child: Text('No Data Found')));
+      }*/
+//    }
     else {
       return Expanded(child: Center(child: CircularProgressIndicator()));
     }

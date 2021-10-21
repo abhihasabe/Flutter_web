@@ -8,13 +8,15 @@ import 'dart:ui';
 
 import 'package:flutter/services.dart';
 import 'package:news_app/route/route.dart' as route;
-import 'package:news_app/screens/PreSales/ui/create_enquiry.dart';
-import 'package:news_app/screens/PreSales/ui/display_enquiry.dart';
+import 'package:news_app/screens/PreSales/ui/EnquiryDetails/enquiry_details_presale.dart';
 import 'package:news_app/screens/PreSales/widgets/presale_mob_card.dart';
 import 'package:news_app/theme/colors.dart';
 import 'package:news_app/theme/dimens.dart';
 import 'package:news_app/theme/theme.dart';
 import 'package:news_app/utils/dialog.helper.dart';
+
+import 'create_enquiry.dart';
+import 'display_enquiry.dart';
 
 class SaleScreen extends StatefulWidget {
   const SaleScreen({Key? key}) : super(key: key);

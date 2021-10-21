@@ -4,7 +4,8 @@ final Color primaryColor = Colors.red;
 final Color primaryDarkColor = Colors.black;
 
 final Color backgroundColor = Color(0xffF1F5FB);
-final Color buttonColor = Colors.black;
+final Color fentRed = Color(0xffFF7F7F);
+final Color buttonColor = Color(0xff3A3A3B);
 final Color backgroundDarkColor = Colors.black;
 
 final Color accentColor = Colors.black;
