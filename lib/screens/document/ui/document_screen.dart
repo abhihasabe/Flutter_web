@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:news_app/screens/document/document_mob/document_screen_mob.dart';
+import 'package:news_app/screens/sidebar/app_drawer.dart';
 
 import 'document_main_screen.dart';
 
@@ -26,29 +27,7 @@ class _DocumentScreenState extends State<DocumentScreen> {
                   child: Row(
                   children: [
                     MediaQuery.of(context).size.width > 1100
-                        ? Expanded(
-                            flex: 1,
-                            child: Drawer(
-                              child: Container(
-                                color: Colors.black,
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    children: [
-                                      SizedBox(
-                                        height: 100,
-                                        width: 100,
-                                        child: Text(
-                                          'Dashboard',
-                                          style: const TextStyle(
-                                              color: Colors.white),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
+                        ? AppDrawer(permanentlyDisplay: size.width > 640)
                         : SizedBox.shrink(),
                     Expanded(flex: 5, child: DocumentMainScreen())
                   ],
