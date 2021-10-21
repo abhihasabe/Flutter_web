@@ -48,7 +48,7 @@ class _DocumentScreenSubHeaderState extends State<DocumentScreenSubHeader> {
                 padding: EdgeInsets.only(top: 5, left: 10),
                 alignment: Alignment.center,
                 width: 200,
-                child: DashboardAutoComplete()),
+                child: DashboardAutoComplete(hintName:"Global Search")),
             SizedBox(
               width: (MediaQuery.of(context).size.width / 6) / 2,
             ),

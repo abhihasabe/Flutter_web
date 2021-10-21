@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 class DashboardAutoComplete extends StatefulWidget {
-  const DashboardAutoComplete({Key? key}) : super(key: key);
+
+  DashboardAutoComplete({Key? key,  this.hintName}) : super(key: key);
+
+  String? hintName;
 
   @override
-  _DashboardAutoCompleteState createState() => _DashboardAutoCompleteState();
+  _DashboardAutoCompleteState createState() => _DashboardAutoCompleteState(hintName!);
 }
 
 class Continent {
@@ -31,6 +34,8 @@ const List<Continent> continentOptions = <Continent>[
 ];
 
 class _DashboardAutoCompleteState extends State<DashboardAutoComplete> {
+  _DashboardAutoCompleteState( this.hintName);
+  String hintName;
   @override
   Widget build(BuildContext context) {
     return Autocomplete<Continent>(
@@ -47,19 +52,20 @@ class _DashboardAutoCompleteState extends State<DashboardAutoComplete> {
           FocusNode fieldFocusNode,
           VoidCallback onFieldSubmitted) {
         return TextFormField(
+          style: TextStyle(fontSize: 14, color: Colors.black12),
           controller: fieldTextEditingController,
           focusNode: fieldFocusNode,
-
           decoration: InputDecoration(
-            suffixIcon: Icon(Icons.search),
+            hintText: hintName,
+            suffixIcon: Icon(Icons.search, size: 18),
             contentPadding: EdgeInsets.all(5),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey),
-              borderRadius: BorderRadius.circular(5.0),
+              borderSide: BorderSide(color: Colors.black12),
+              borderRadius: BorderRadius.circular(3.0),
             ),
             enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey),
-              borderRadius: BorderRadius.circular(5.0),
+              borderSide: BorderSide(color: Colors.black12),
+              borderRadius: BorderRadius.circular(3.0),
             ),
           ),
           // style: const TextStyle(fontWeight: FontWeight.bold),
