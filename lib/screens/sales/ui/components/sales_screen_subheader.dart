@@ -16,22 +16,18 @@ class _SalesScreenSubHeaderState extends State<SalesScreenSubHeader> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      height: 80,
+      height: 50,
       width: MediaQuery.of(context).size.width,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(
-              width: (MediaQuery.of(context).size.width / 6) / 3,
-            ),
+
             SalesScreenFilterTab(),
-            SizedBox(
-              width: (MediaQuery.of(context).size.width / 4) / 2,
-            ),
+
             Container(
-                height: 50,
+                height: 40,
                 padding: EdgeInsets.only(top: 5, left: 10),
                 alignment: Alignment.center,
                 width: 200,
