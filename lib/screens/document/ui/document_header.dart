@@ -11,6 +11,7 @@ class DocumentScreenHeader extends StatefulWidget {
 }
 
 class _DocumentScreenHeaderState extends State<DocumentScreenHeader> {
+
   int selected_index = 0;
   late Size size;
   late List<String> tabs;

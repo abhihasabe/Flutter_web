@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-final Color primaryColor = Colors.red;
+final Color primaryColor = Colors.blue;
 final Color primaryDarkColor = Colors.black;
 
 final Color backgroundColor = Color(0xffF1F5FB);
@@ -28,7 +28,7 @@ final Color hoverColorDarkColor = Color(0xff3A3A3B);
 final Color focusColor = Color(0xffA8DAB5);
 final Color focusColorDarkColor = Color(0xff0B2512);
 
-final Color iconColor = Colors.red;
+final Color iconColor = Colors.white;
 final Color iconDarkColor = Colors.purple.shade200;
 
 final Color disabledColor = Colors.grey;
