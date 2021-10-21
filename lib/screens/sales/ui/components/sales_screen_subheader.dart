@@ -16,7 +16,7 @@ class _SalesScreenSubHeaderState extends State<SalesScreenSubHeader> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      height: 80,
+      height: 50,
       width: MediaQuery.of(context).size.width,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,

@@ -18,21 +18,18 @@ class _SaleScreenState extends State<SaleScreen> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Theme(
-        data: ThemeData(),
-        child: Scaffold(
-            body: size.width > 640
-                ? SafeArea(
-                    child: Row(
-                    children: [
-                      MediaQuery.of(context).size.width > 1100
-                          ? AppDrawer(permanentlyDisplay: size.width > 640)
-                          : SizedBox.shrink(),
-                      Expanded(flex: 5, child: SalesMainScreen())
-                    ],
-                  ))
-                : SalesScreenMobAppDrawer()),
-      ),
+      body: Scaffold(
+          body: size.width > 640
+              ? SafeArea(
+                  child: Row(
+                  children: [
+                    MediaQuery.of(context).size.width > 1100
+                        ? AppDrawer(permanentlyDisplay: size.width > 640)
+                        : SizedBox.shrink(),
+                    Expanded(flex: 5, child: SalesMainScreen())
+                  ],
+                ))
+              : SalesScreenMobAppDrawer()),
     );
   }
 }

@@ -22,7 +22,7 @@ class _SalesScreenHeaderState extends State<SalesScreenHeader> {
       },
       child: Container(
         alignment: Alignment.centerLeft,
-        height: 100,
+        height: 60,
         child: Row(
           children: [
             SizedBox(
@@ -62,7 +62,7 @@ class _SalesScreenHeaderState extends State<SalesScreenHeader> {
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
     return Container(
-      height: 100,
+      height: 60,
       child: ListView(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
