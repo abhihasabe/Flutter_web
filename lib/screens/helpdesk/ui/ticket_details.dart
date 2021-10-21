@@ -11,7 +11,7 @@ import 'package:news_app/theme/colors.dart';
 import 'package:news_app/theme/theme.dart';
 
 
-class DisplayEnquiry extends StatefulWidget {
+class TicketDetails extends StatefulWidget {
   // final int leadId;
 
   // DisplayEnquiry({
@@ -19,10 +19,10 @@ class DisplayEnquiry extends StatefulWidget {
   //   this.leadId,
   // }) : super(key: key);
   @override
-  _DisplayEnquiryState createState() => _DisplayEnquiryState();
+  _TicketDetailsState createState() => _TicketDetailsState();
 }
 
-class _DisplayEnquiryState extends State<DisplayEnquiry>
+class _TicketDetailsState extends State<TicketDetails>
     with TickerProviderStateMixin {
 
 
@@ -160,8 +160,6 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
     genderList.add('Female');
 
     cityList.clear();
-
-
     super.initState();
   }
 
@@ -170,7 +168,6 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
     await Future<dynamic>.delayed(const Duration(milliseconds: 50));
     return true;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -247,7 +244,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
               ),
             ),
             Text(
-              'Enquiry Details',
+              'Ticket Details',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: MyThemes.FontTitle,
@@ -390,7 +387,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                               maxLines: 1,
                               maxLength: 30,
                               readOnly: true,
-                                enabled: false,
+                              enabled: false,
                               enableInteractiveSelection: false,
                               controller: emailController,
                               buildCounter: (BuildContext context,
@@ -774,7 +771,7 @@ class _DisplayEnquiryState extends State<DisplayEnquiry>
                                 left: 20, right: 20, bottom: 10),
                             child: TextFormField(
                               readOnly: true,
- enabled: false,
+                              enabled: false,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(
                                   borderSide: BorderSide(

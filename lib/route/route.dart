@@ -6,6 +6,7 @@ import 'package:news_app/screens/PreSales/ui/create_enquiry.dart';
 import 'package:news_app/screens/PreSales/ui/presale_screen.dart';
 import 'package:news_app/screens/Sales/ui/sales_screen.dart';
 import 'package:news_app/screens/dashboard/ui/dashboard_screen.dart';
+import 'package:news_app/screens/helpdesk/ui/helpdesk_screen.dart';
 import 'package:news_app/screens/splash_screen.dart';
 
 // route names
@@ -19,6 +20,7 @@ const String preSalePage = 'preSalePage';
 const String salesPage = 'salesPage';
 const String createEnquiry = 'createEnquiry';
 const String displayEnquiry = 'displayEnquiry';
+const String helpdesk = 'helpdesk';
 
 // controller function to control page route flow
 Route<dynamic> controller(RouteSettings settings) {
@@ -35,6 +37,8 @@ Route<dynamic> controller(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => CreateEnquiry());
     case salesPage:
       return MaterialPageRoute(builder: (context) => SaleScreen());
+    case helpdesk:
+      return MaterialPageRoute(builder: (context) => HelpDeskScreen());
     default:
       return MaterialPageRoute(
           builder: (_) => Scaffold(
