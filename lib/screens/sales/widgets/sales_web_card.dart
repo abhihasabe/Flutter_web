@@ -61,7 +61,7 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 180.0),
+                  padding: const EdgeInsets.only(left: 160.0),
                   child: Row(
                     children: <Widget>[
                       Padding(
@@ -76,7 +76,7 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 180.0),
+                  padding: const EdgeInsets.only(left: 110.0),
                   child: Row(
                     children: <Widget>[
                       Padding(
@@ -91,7 +91,7 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 180.0),
+                  padding: const EdgeInsets.only(left: 110.0),
                   child: Row(
                     children: <Widget>[
                       Padding(
@@ -106,7 +106,7 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 180.0),
+                  padding: const EdgeInsets.only(left: 110.0),
                   child: Row(
                     children: <Widget>[
                       Padding(
@@ -121,7 +121,7 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 180.0),
+                  padding: const EdgeInsets.only(left: 110.0),
                   child: Row(
                     children: <Widget>[
                       Padding(
@@ -158,7 +158,7 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 80.0),
+                    padding: const EdgeInsets.only(left: 50.0),
                     child: Row(
                       children: <Widget>[
                         Padding(
@@ -173,7 +173,7 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 180.0),
+                    padding: const EdgeInsets.only(left: 110.0),
                     child: Row(
                       children: <Widget>[
                         Padding(
@@ -188,7 +188,7 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 180.0),
+                    padding: const EdgeInsets.only(left: 130.0),
                     child: Row(
                       children: <Widget>[
                         Padding(
@@ -203,7 +203,7 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 190.0),
+                    padding: const EdgeInsets.only(left: 110.0),
                     child: Row(
                       children: <Widget>[
                         Padding(
@@ -218,7 +218,7 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 180.0),
+                    padding: const EdgeInsets.only(left: 110.0),
                     child: Row(
                       children: <Widget>[
                         Padding(
