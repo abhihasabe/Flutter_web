@@ -8,9 +8,8 @@ import 'dart:ui';
 
 import 'package:flutter/services.dart';
 import 'package:news_app/route/route.dart' as route;
-import 'package:news_app/screens/PreSales/ui/EnquiryDetails/EnquiryDetailWeb.dart';
-import 'package:news_app/screens/PreSales/ui/create_enquiry.dart';
-import 'package:news_app/screens/PreSales/ui/display_enquiry.dart';
+import 'package:news_app/screens/PreSales/ui/create_enquiry_presale.dart';
+import 'package:news_app/screens/PreSales/ui/EnquiryDetails/enquiry_details_presale.dart';
 import 'package:news_app/screens/PreSales/widgets/presale_mob_card.dart';
 import 'package:news_app/screens/PreSales/widgets/presale_web_card.dart';
 import 'package:news_app/theme/colors.dart';
@@ -106,7 +105,7 @@ class _PreSaleScreenState extends State<PreSaleScreen> with TickerProviderStateM
             child: !kIsWeb?FloatingActionButton(
                 onPressed: () {
                   Navigator.push(context,  MaterialPageRoute(
-                      builder: (context) =>CreateEnquiry()));
+                      builder: (context) =>CreateEnquiryPresale()));
                 },
                 child: Icon(Icons.playlist_add,color: Colors.white),
                 backgroundColor: accentColor):Container(),
@@ -280,7 +279,7 @@ class _PreSaleScreenState extends State<PreSaleScreen> with TickerProviderStateM
                         label: "Create Enquiry",
                         onPress: () async {
                           Navigator.push(context,  MaterialPageRoute(
-                              builder: (context) =>CreateEnquiry()));
+                              builder: (context) =>CreateEnquiryPresale()));
                         },
                       ),
                     ],
@@ -306,8 +305,8 @@ class _PreSaleScreenState extends State<PreSaleScreen> with TickerProviderStateM
               child: Column(
                 children: [
                   Container(
-                    width: circleWidth,
-                    height: circleHeight,
+                    width: mobCircleWidth,
+                    height: mobCircleHeight,
                     child: Center(child: Text("29",style: TextStyle(color: Colors.black,fontSize:countTextSize))),
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -327,8 +326,8 @@ class _PreSaleScreenState extends State<PreSaleScreen> with TickerProviderStateM
               child: Column(
                 children: [
                   Container(
-                    width: circleWidth,
-                    height: circleHeight,
+                    width: mobCircleWidth,
+                    height: mobCircleHeight,
                     child: Center(child: Text("5",style: TextStyle(color: Colors.black,fontSize:countTextSize))),
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -346,8 +345,8 @@ class _PreSaleScreenState extends State<PreSaleScreen> with TickerProviderStateM
               child: Column(
                 children: [
                   Container(
-                    width: circleWidth,
-                    height: circleHeight,
+                    width: mobCircleWidth,
+                    height: mobCircleHeight,
                     child: Center(child: Text("20",style: TextStyle(color: Colors.black,fontSize:countTextSize))),
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -365,8 +364,8 @@ class _PreSaleScreenState extends State<PreSaleScreen> with TickerProviderStateM
               child: Column(
                 children: [
                   Container(
-                    width: circleWidth,
-                    height: circleHeight,
+                    width: mobCircleWidth,
+                    height: mobCircleHeight,
                     child: Center(child: Text("12",style: TextStyle(color: Colors.black,fontSize:countTextSize))),
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -490,20 +489,11 @@ class _PreSaleScreenState extends State<PreSaleScreen> with TickerProviderStateM
                             left: 20, right: 20, top: 0, bottom: 0),
                         child: InkWell(
                           onTap: () {
-                            if(kIsWeb)
-                              {
                                 Navigator.push(context,  MaterialPageRoute(
-                                    builder: (context) =>EnquiryDetailWeb()));
-                              }
-                            else
-                              {
-                                Navigator.push(context,  MaterialPageRoute(
-                                    builder: (context) =>DisplayEnquiry()));
-                              }
-
+                                    builder: (context) =>EnquiryDetailPresale()));
                           },
                           child: Padding(
-                            padding: const EdgeInsets.all(18.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: Container(
                               child: Stack(
                                 children: <Widget>[

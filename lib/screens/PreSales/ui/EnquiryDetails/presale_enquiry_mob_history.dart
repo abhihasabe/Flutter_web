@@ -1,16 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:news_app/theme/dimens.dart';
 
-class MobCard extends StatefulWidget {
-  const MobCard({Key? key}) : super(key: key);
+class PresaleEnquiryMobHistory extends StatefulWidget {
+  const PresaleEnquiryMobHistory({Key? key}) : super(key: key);
 
   @override
-  _MobCardState createState() => _MobCardState();
+  _PresaleEnquiryMobHistoryState createState() => _PresaleEnquiryMobHistoryState();
 
 }
 
-class _MobCardState extends State<MobCard> with TickerProviderStateMixin{
+class _PresaleEnquiryMobHistoryState extends State<PresaleEnquiryMobHistory> with TickerProviderStateMixin{
   @override
   AnimationController ?animationController;
   Animation<dynamic> ?animation;
@@ -63,7 +62,7 @@ class _MobCardState extends State<MobCard> with TickerProviderStateMixin{
                               color: Colors.black,
 //                                                          fontWeight: FontWeight.w600,
                               fontSize:
-                              fontTextSmall),
+                              18),
                         ),
                       ),
                     ],
@@ -92,7 +91,7 @@ class _MobCardState extends State<MobCard> with TickerProviderStateMixin{
                               style: TextStyle(
                                   color:
                                   Colors.grey,
-                                  fontSize: fontTextSmall),
+                                  fontSize: 14),
                             ),
                           ),
                         ],
@@ -113,7 +112,7 @@ class _MobCardState extends State<MobCard> with TickerProviderStateMixin{
                       textAlign: TextAlign.left,
                       style: TextStyle(
                           fontSize:
-                          fontTextSmall,
+                          18,
 //                                                        fontWeight: FontWeight.w400,
                           color: Colors.red),
                     ),
@@ -188,11 +187,17 @@ class _MobCardState extends State<MobCard> with TickerProviderStateMixin{
             ),
             Padding(
               padding:
-              const EdgeInsets.only(top: 8),
+              const EdgeInsets.only(top: 5),
               child: Row(
                 children: [
                   GestureDetector(
                     onTap: () {
+                      // if (enquiryList[i]
+                      //     .mobileNumber !=
+                      //     null) {
+                      //   _service.call(enquiryList[i]
+                      //       .mobileNumber);
+                      // }
                     },
                     child: Container(
                       decoration: BoxDecoration(

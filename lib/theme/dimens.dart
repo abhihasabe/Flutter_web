@@ -17,6 +17,10 @@ final double fontButton = 14.0;
 // PreSale dimensions
 final double circleWidth = 40.0;
 final double circleHeight = 20.0;
+
+final double mobCircleWidth = 45.0;
+final double mobCircleHeight = 35.0;
+
 final double countTextSize = 12.0;
 
 

@@ -180,7 +180,7 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin{
                           Container(
                             width: 40,
                             decoration: new BoxDecoration(
-                                color: primaryColor,
+                                color: fentRed,
                                 borderRadius: new BorderRadius.only(
                                   topLeft: const Radius.circular(40.0),
                                   topRight: const Radius.circular(40.0),

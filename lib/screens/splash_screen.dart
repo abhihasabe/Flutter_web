@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:news_app/route/route.dart' as route;
+import 'package:news_app/screens/PreSales/ui/presale_screen.dart';
 
 class Splash extends StatefulWidget {
   @override
@@ -18,7 +19,7 @@ class _Splash extends State {
     // TODO: implement initState
     super.initState();
     Timer(Duration(seconds: 3),
-        () => Navigator.pushNamed(context, route.helpdesk));
+        () => Navigator.pushNamed(context,route.preSalePage ));
   }
 
   @override
