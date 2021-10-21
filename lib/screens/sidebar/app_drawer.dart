@@ -85,7 +85,7 @@ class _AppDrawerState extends State<AppDrawer> with RouteAware {
                   leading: const Icon(Icons.photo_library),
                   title: Text("Help Desk"),
                   onTap: () async {
-                    await Navigator.pushNamed(context, route.homePage);
+                    await Navigator.pushNamed(context, route.helpDesk);
                   },
                   //selected: _selectedRoute == RouteNames.gallery,
                 ),

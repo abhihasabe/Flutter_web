@@ -23,6 +23,7 @@ class _Dashboard extends State {
     // TODO: implement build
     return AppScaffold(
       key: key,
+      pageTitle: "Dashboard",
       body: ListView(
         shrinkWrap: true,
         children: [

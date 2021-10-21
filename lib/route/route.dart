@@ -20,7 +20,6 @@ const String preSalePage = 'preSalePage';
 const String salesPage = 'salesPage';
 const String createEnquiryPresale = 'createEnquiryPresale';
 const String displayEnquiry = 'displayEnquiry';
-const String helpdesk = 'helpdesk';
 
 // controller function to control page route flow
 Route<dynamic> controller(RouteSettings settings) {
@@ -37,7 +36,7 @@ Route<dynamic> controller(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => CreateEnquiryPresale());
     case salesPage:
       return MaterialPageRoute(builder: (context) => SaleScreen());
-    case helpdesk:
+    case helpDesk:
       return MaterialPageRoute(builder: (context) => HelpDeskScreen());
     default:
       return MaterialPageRoute(

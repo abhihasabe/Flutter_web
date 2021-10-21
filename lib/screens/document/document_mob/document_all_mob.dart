@@ -50,7 +50,7 @@ class _DocumentAllMobState extends State<DocumentAllMob> {
                   padding: EdgeInsets.only(top: 5, left: 10),
                   alignment: Alignment.center,
                   width: 200,
-                  child: DashboardAutoComplete()),
+                  child: DashboardAutoComplete(hintName:"Global Search")),
             ],
           ),
           SizedBox(

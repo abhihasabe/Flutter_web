@@ -95,7 +95,7 @@ class _AppScaffold extends State {
                   //...tabs.map((e) => headerTab(e, tabs.indexOf(e))).toList(),
                   Padding(
                     padding: const EdgeInsets.only(top: 20),
-                    child: Text("   Dashboard", style: TextStyle(fontSize: 16),),
+                    child: Text("   $pageTitle", style: TextStyle(fontSize: 16),),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right:28.0, top: 30, bottom: 20),
