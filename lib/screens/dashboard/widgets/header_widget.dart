@@ -15,8 +15,12 @@ class HeaderWidget extends StatefulWidget {
 }
 
 class _HeaderWidget extends State<HeaderWidget> {
+
+  bool? displayMobileLayout;
+
   @override
   Widget build(BuildContext context) {
+    displayMobileLayout= MediaQuery.of(context).size.width < 600;
     return Container(
       color: Colors.white,
       height: 60,
@@ -29,7 +33,7 @@ class _HeaderWidget extends State<HeaderWidget> {
             child: Text("Dashboard > KPL"),
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width/2.2,
+            width: !displayMobileLayout!?MediaQuery.of(context).size.width/2.2:MediaQuery.of(context).size.width/4,
           ),
           Container(
               height: 40,
