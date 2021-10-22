@@ -247,7 +247,7 @@ class _TicketDetailsState extends State<TicketDetails>
               ),
             ),
             Text(
-              'Enquiry Details',
+              'Ticket Details',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: MyThemes.FontTitle,
@@ -319,7 +319,7 @@ class _TicketDetailsState extends State<TicketDetails>
                                 suffixIcon: Padding(
                                   padding: EdgeInsets.all(0.0),
                                 ),
-                                labelText: 'Name',
+                                labelText: 'Ticket No',
                                 labelStyle: TextStyle(
                                   color: const Color(0xff8c8c8c),
                                 ),
@@ -327,7 +327,82 @@ class _TicketDetailsState extends State<TicketDetails>
                             ),
                           ),
 
+                          Visibility(
+                            visible: isModelVisible,
+                            child: Container(
+                              padding: const EdgeInsets.only(
+                                  left: 20, right: 20, bottom: 10),
+                              child: TextFormField(
+                                readOnly: true,
+                                enabled: false,
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.grey, width: 1.0,),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.black54,
+                                        width: 1.0),
+                                  ),
+//                isDense: false,
+                                  suffixIcon: Icon(
+                                      Icons.keyboard_arrow_down),
+                                  labelText: 'Module',
+                                ),
+                                controller: modelController,
+                                validator: (String ?value) {
+                                  if (value!.isEmpty) {
+                                    return 'Please Select Module';
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                                onTap: () {
 
+
+                                },
+                              ),
+                            ),
+                          ),
+                          Visibility(
+                            visible: isModelVisible,
+                            child: Container(
+                              padding: const EdgeInsets.only(
+                                  left: 20, right: 20, bottom: 10),
+                              child: TextFormField(
+                                readOnly: true,
+                                enabled: false,
+                                decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Colors.grey, width: 1.0,),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Colors.black54,
+                                        width: 1.0),
+                                  ),
+//                isDense: false,
+                                  suffixIcon: Icon(
+                                      Icons.keyboard_arrow_down),
+                                  labelText: 'Sub Module',
+                                ),
+                                controller: modelController,
+                                validator: (String ?value) {
+                                  if (value!.isEmpty) {
+                                    return 'Please Select Sub Module';
+                                  } else {
+                                    return null;
+                                  }
+                                },
+                                onTap: () {
+
+
+                                },
+                              ),
+                            ),
+                          ),
                           Container(
                             padding:
                             const EdgeInsets.only(
@@ -588,44 +663,7 @@ class _TicketDetailsState extends State<TicketDetails>
                                   },
                                 ),
                               ),
-                              Visibility(
-                                visible: isModelVisible,
-                                child: Container(
-                                  padding: const EdgeInsets.only(
-                                      left: 20, right: 20, bottom: 10),
-                                  child: TextFormField(
-                                    readOnly: true,
-                                    enabled: false,
-                                    decoration: InputDecoration(
-                                      border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Colors.grey, width: 1.0,),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.black54,
-                                            width: 1.0),
-                                      ),
-//                isDense: false,
-                                      suffixIcon: Icon(
-                                          Icons.keyboard_arrow_down),
-                                      labelText: 'Model',
-                                    ),
-                                    controller: modelController,
-                                    validator: (String ?value) {
-                                      if (value!.isEmpty) {
-                                        return 'Please Select Model';
-                                      } else {
-                                        return null;
-                                      }
-                                    },
-                                    onTap: () {
 
-
-                                    },
-                                  ),
-                                ),
-                              ),
                               Container(
                                 padding: const EdgeInsets.only(
                                     left: 20, right: 20, bottom: 10),

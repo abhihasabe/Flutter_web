@@ -136,7 +136,7 @@ class _hdWebCardState extends State<hdWebCard> with TickerProviderStateMixin{
                         const EdgeInsets.only(
                             left: 0.0, top: 4),
                         child: Text(
-                          'Created: Today 1:52 PM',
+                          'Created: Sept 11,2021',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 13),
