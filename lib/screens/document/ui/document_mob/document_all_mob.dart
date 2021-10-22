@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:news_app/screens/document/ui/components/document_auto_completer_widget.dart';
 import 'package:news_app/screens/document/ui/components/document_button.dart';
 import 'package:news_app/screens/document/ui/components/document_dropdown_widget.dart';
-import 'package:news_app/screens/document/ui/document_table.dart';
+import 'package:news_app/screens/document/ui/components/document_table.dart';
 import 'package:news_app/utils/date_picker.dart';
 
 class DocumentAllMob extends StatefulWidget {
@@ -50,7 +50,7 @@ class _DocumentAllMobState extends State<DocumentAllMob> {
                   padding: EdgeInsets.only(top: 5, left: 10),
                   alignment: Alignment.center,
                   width: 200,
-                  child: DashboardAutoComplete(hintName:"Global Search")),
+                  child: DashboardAutoComplete(hintName: "Global Search")),
             ],
           ),
           SizedBox(

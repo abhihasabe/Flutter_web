@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import 'components/document_user_card.dart';
+import 'document_user_card.dart';
 
 class DocumentScreenHeader extends StatefulWidget {
   const DocumentScreenHeader({Key? key}) : super(key: key);
@@ -11,7 +11,6 @@ class DocumentScreenHeader extends StatefulWidget {
 }
 
 class _DocumentScreenHeaderState extends State<DocumentScreenHeader> {
-
   int selected_index = 0;
   late Size size;
   late List<String> tabs;

@@ -38,6 +38,8 @@ class _hdWebCardState extends State<hdWebCard> with TickerProviderStateMixin{
       elevation: 3,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(7)),
+        child: Padding(
+          padding: EdgeInsets.all(16.0) ,
         child: ListTile(
           leading: Column(
             children:[
@@ -198,6 +200,7 @@ class _hdWebCardState extends State<hdWebCard> with TickerProviderStateMixin{
             ),
 
           ],
+        ),
         ),
       ),
     );
