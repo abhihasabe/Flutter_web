@@ -37,9 +37,9 @@ class _hdWebCardState extends State<hdWebCard> with TickerProviderStateMixin{
       color: Colors.white,
       elevation: 3,
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(7)),
+          borderRadius: BorderRadius.circular(16)),
         child: Padding(
-          padding: EdgeInsets.all(16.0) ,
+          padding: EdgeInsets.all(8.0) ,
         child: ListTile(
           leading: Column(
             children:[
@@ -73,7 +73,7 @@ class _hdWebCardState extends State<hdWebCard> with TickerProviderStateMixin{
                         const EdgeInsets.only(
                             left: 0.0, top: 4),
                         child: Text(
-                          'DTH354567',
+                          'DTHJ3859889',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 13),
@@ -136,7 +136,7 @@ class _hdWebCardState extends State<hdWebCard> with TickerProviderStateMixin{
                         const EdgeInsets.only(
                             left: 0.0, top: 4),
                         child: Text(
-                          'Created: Sept 11,2021',
+                          'Created : Sept 11, 2021',
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 13),
@@ -147,7 +147,7 @@ class _hdWebCardState extends State<hdWebCard> with TickerProviderStateMixin{
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.only(left:180.0),
+                  padding: const EdgeInsets.only(left:200.0),
                   child: Row(
                     children: <Widget>[
                       Padding(

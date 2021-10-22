@@ -125,7 +125,7 @@ class _hdMobCardState extends State<hdMobCard> with TickerProviderStateMixin {
                       Padding(
                         padding: const EdgeInsets.only(left: 0.0, top: 4),
                         child: Text(
-                          "Created: Sept11,2021",
+                          "Created : Sept11, 2021",
                           textAlign: TextAlign.left,
                           style: TextStyle(
                               color: Colors.grey,
