@@ -127,14 +127,14 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top:4.0,left: 10.0,right: 10),
-                  child: Text("My Tickets",style: TextStyle(color: Colors.grey,fontSize:countTextSize),),
+                  child: Text("My Tickets",style: TextStyle(color: Colors.black,fontSize:countTextSize),),
                 ),
                 Container(
                   width: circleWidth,
                   height: circleHeight,
                   child: Center(child: Text("06",style: TextStyle(color: Colors.black,fontSize:countTextSize))),
                   decoration: new BoxDecoration(
-                      border: Border.all(width: 1.0,color: Colors.blue),
+                      border: Border.all(width: 2.0,color: Colors.lightBlue),
                       borderRadius: new BorderRadius.only(
                         topLeft: const Radius.circular(10.0),
                         topRight: const Radius.circular(10.0),
@@ -162,7 +162,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                   height: circleHeight,
                   child: Center(child: Text("06",style: TextStyle(color: Colors.black,fontSize:countTextSize))),
                   decoration: new BoxDecoration(
-                      border: Border.all(width: 1.0,color: Colors.deepOrange),
+                      border: Border.all(width: 2.0,color: Colors.deepOrangeAccent),
                       borderRadius: new BorderRadius.only(
                         topLeft: const Radius.circular(10.0),
                         topRight: const Radius.circular(10.0),
@@ -189,7 +189,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                   height: circleHeight,
                   child: Center(child: Text("06",style: TextStyle(color: Colors.black,fontSize:countTextSize))),
                   decoration: new BoxDecoration(
-                      border: Border.all(width: 1.0,color: Colors.green),
+                      border: Border.all(width: 2.0,color: Colors.green),
                       borderRadius: new BorderRadius.only(
                         topLeft: const Radius.circular(10.0),
                         topRight: const Radius.circular(10.0),
@@ -273,14 +273,20 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                     width: circleWidth,
                     height: circleHeight,
                     child: Center(child: Text("06",style: TextStyle(color: Colors.black,fontSize:countTextSize))),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(width: 1.0,color: Colors.blue)),
+                    decoration: new BoxDecoration(
+                        border: Border.all(width: 1.0,color: Colors.lightBlue),
+                        borderRadius: new BorderRadius.only(
+                          topLeft: const Radius.circular(10.0),
+                          topRight: const Radius.circular(10.0),
+                          bottomLeft: const Radius.circular(10.0),
+                          bottomRight: const Radius.circular(10.0),
+                        )
+                    ),
                     // color: Color(C)),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top:4.0),
-                    child: Text("My Tickets",style: TextStyle(color: Colors.grey,fontSize:countTextSize),),
+                    child: Text("My Tickets",style: TextStyle(color: Colors.black,fontSize:countTextSize),),
                   )
                 ],
               ),
@@ -294,9 +300,15 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                     width: circleWidth,
                     height: circleHeight,
                     child: Center(child: Text("06",style: TextStyle(color: Colors.black,fontSize:countTextSize))),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(width: 1.0,color: Colors.deepOrange)),
+                    decoration: new BoxDecoration(
+                        border: Border.all(width: 1.0,color: Colors.deepOrangeAccent),
+                        borderRadius: new BorderRadius.only(
+                          topLeft: const Radius.circular(10.0),
+                          topRight: const Radius.circular(10.0),
+                          bottomLeft: const Radius.circular(10.0),
+                          bottomRight: const Radius.circular(10.0),
+                        )
+                    ),
                     // color: Color(C)),
                   ),
                   Padding(
@@ -313,9 +325,15 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                     width: circleWidth,
                     height: circleHeight,
                     child: Center(child: Text("06",style: TextStyle(color: Colors.black,fontSize:countTextSize))),
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border: Border.all(width: 1.0,color: Colors.green)),
+                    decoration: new BoxDecoration(
+                        border: Border.all(width: 1.0,color: Colors.green),
+                        borderRadius: new BorderRadius.only(
+                          topLeft: const Radius.circular(10.0),
+                          topRight: const Radius.circular(10.0),
+                          bottomLeft: const Radius.circular(10.0),
+                          bottomRight: const Radius.circular(10.0),
+                        )
+                    ),
                     // color: Color(C)),
                   ),
                   Padding(
@@ -448,7 +466,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
 
                           },
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(4.0),
                             child: Container(
                               child: Stack(
                                 children: <Widget>[
