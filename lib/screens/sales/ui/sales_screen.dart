@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:news_app/screens/sales/ui/components/sales_screen_mob_app_drawer.dart';
+import 'package:news_app/screens/sales/ui/sales_body/sales_main_screen.dart';
+import 'package:news_app/screens/sales/ui/sales_mob/sales_screen_mob_app_drawer.dart';
 import 'package:news_app/screens/sidebar/app_drawer.dart';
-import 'sales_main_screen.dart';
 
 class SaleScreen extends StatefulWidget {
   const SaleScreen({Key? key}) : super(key: key);
