@@ -138,7 +138,7 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin{
                         child: Text(
                           'Buffer Zone, Paris',
                           style: TextStyle(
-                              color: Colors.red,
+                              color: primaryColor,
                               fontSize: 12),
                         ),
                       ),
@@ -293,6 +293,24 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin{
                         ),
                       ),
                     ],
+                  ),
+                ),
+                Flexible(
+                  child: Padding(
+                    padding:
+                    const EdgeInsets.only(left: 50,
+                        top: 3.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Icon(Icons.remove_red_eye,color: Colors.blue,size: 15,),
+                        ),
+
+                      ],
+                    ),
                   ),
                 ),
               ],

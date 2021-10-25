@@ -12,6 +12,7 @@ import 'package:news_app/screens/PreSales/ui/create_enquiry_presale.dart';
 import 'package:news_app/screens/PreSales/ui/EnquiryDetails/enquiry_details_presale.dart';
 import 'package:news_app/screens/PreSales/widgets/presale_mob_card.dart';
 import 'package:news_app/screens/PreSales/widgets/presale_web_card.dart';
+import 'package:news_app/screens/sales/ui/components/sales_button.dart';
 import 'package:news_app/screens/sidebar/app_scaffold.dart';
 import 'package:news_app/theme/colors.dart';
 import 'package:news_app/theme/dimens.dart';
@@ -126,7 +127,7 @@ class _PreSaleScreenState extends State<PreSaleScreen> with TickerProviderStateM
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top:8.0,right: 20,left: 20),
+            padding: const EdgeInsets.only(top:8.0,right: 20,left: 60),
             child: Row(
               children: [
                 Padding(
@@ -237,7 +238,7 @@ class _PreSaleScreenState extends State<PreSaleScreen> with TickerProviderStateM
           Padding(
             padding: const EdgeInsets.only(left:38.0, bottom: 8),
             child: Container(
-              width: MediaQuery.of(context).size.width/4,
+              width: MediaQuery.of(context).size.width/5,
               child: Padding(
                 padding: const EdgeInsets.only(left: 12.0, right: 12.0),
                 child: TextField(
@@ -274,13 +275,26 @@ class _PreSaleScreenState extends State<PreSaleScreen> with TickerProviderStateM
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  ButtonWidget(
-                    label: "Create Enquiry",
-                    onPress: () async {
-                      Navigator.push(context,  MaterialPageRoute(
-                          builder: (context) =>CreateEnquiryPresale()));
-                    },
-                  ),
+                ElevatedButton(
+                style: ButtonStyle(
+                textStyle: MaterialStateProperty.all<TextStyle>(
+                  TextStyle(color: textColor, fontSize: 16, letterSpacing: 1)),
+                  backgroundColor: MaterialStateProperty.all(primaryColor),
+                ),
+                   onPressed: ()
+                      {
+                        Navigator.push(context,  MaterialPageRoute(
+                                            builder: (context) =>CreateEnquiryPresale()));
+                      },
+                child: Container(
+                height: 35,
+                width: 175,
+                alignment: Alignment.center,
+                 child:
+                 Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+                  Text('Create new', style: TextStyle(color: textDarkColor)),]),
+    ),
+    ),
                 ],
               ),
             ),
@@ -489,7 +503,7 @@ class _PreSaleScreenState extends State<PreSaleScreen> with TickerProviderStateM
                                     builder: (context) =>EnquiryDetailPresale()));
                           },
                           child: Padding(
-                            padding: const EdgeInsets.all(4.0),
+                            padding: const EdgeInsets.only(left:50.0,right: 50,top:10,bottom: 5),
                             child: Container(
                               child: Stack(
                                 children: <Widget>[
