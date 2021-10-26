@@ -4,12 +4,13 @@ import 'package:news_app/theme/colors.dart';
 
 class WebCard extends StatefulWidget {
   const WebCard({Key? key}) : super(key: key);
-
   @override
   _WebCardState createState() => _WebCardState();
 }
 
 class _WebCardState extends State<WebCard> with TickerProviderStateMixin {
+  late List<Map<String, dynamic>> order_list;
+
   @override
   AnimationController? animationController;
   Animation<dynamic>? animation;
@@ -30,45 +31,167 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Card(
-        color: Colors.white,
-        elevation: 3,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Row(
+      child: ListView.builder(
+        // scrollDirection: !displayMobileLayout!?Axis.horizontal:Axis.vertical,
+        shrinkWrap: true,
+        itemCount: 3,
+        itemBuilder: _statisticsListBuilder,
+      ),
+    );
+  }
+
+  Widget _statisticsListBuilder(BuildContext context, int index) {
+    order_list = [
+      {
+        'orderNo': '406-9338089-364435555',
+        'OrderPlaced': '10 Aug 2021',
+        'status': 'Status',
+        'TotalItems': 11,
+        'Total': '\$10.299'
+      },
+      {
+        'orderNo': '406-9338089-364435556',
+        'OrderPlaced': '10 Aug 2021',
+        'status': 'Order Delivered',
+        'date': '12 Aug 2021',
+        'TotalItems': 11,
+        'Total': '\$10.299'
+      },
+      {
+        'orderNo': '406-9338089-364435557',
+        'OrderPlaced': '10 Aug 2021',
+        'status': 'Order Cancelled',
+        'date': '14 Aug 2021',
+        'TotalItems': 11,
+        'Total': '\$10.299',
+        'reason':
+            'Expected Delivery Date Has Changed And The Product Is Arriving At A Later Date'
+      }
+    ];
+    return Card(
+      margin:
+          const EdgeInsets.only(left: 60.0, right: 20.0, top: 5.0, bottom: 5.0),
+      color: Colors.white,
+      elevation: 3,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 250,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left: 0.0, top: 4),
+                        child: Text(
+                          'Order No',
+                          style: TextStyle(color: Colors.black, fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 160,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left: 0.0, top: 4),
+                        child: Text(
+                          "ORDER PLACED",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(color: Colors.black, fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 160,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left: 0.0, top: 4),
+                        child: Text(
+                          "${order_list[index]['status']}",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(color: Colors.black, fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 160,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left: 0.0, top: 4),
+                        child: Text(
+                          'Total Items',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(color: Colors.black, fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  width: 160,
+                  child: Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left: 0.0, top: 4),
+                        child: Text(
+                          'TOTAL',
+                          textAlign: TextAlign.left,
+                          style: TextStyle(color: Colors.black, fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 0.0),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 0.0),
+                  SizedBox(
+                    width: 250,
                     child: Row(
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.only(left: 0.0, top: 4),
                           child: Text(
-                            'Order No',
+                            "${order_list[index]['orderNo']}",
                             style: TextStyle(color: Colors.black, fontSize: 16),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 160.0),
+                  SizedBox(
+                    width: 160,
                     child: Row(
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.only(left: 0.0, top: 4),
                           child: Text(
-                            'ORDER PLACED',
+                            "${order_list[index]['OrderPlaced']}",
                             textAlign: TextAlign.left,
                             style: TextStyle(color: Colors.black, fontSize: 16),
                           ),
@@ -76,14 +199,14 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 110.0),
+                  SizedBox(
+                    width: 160,
                     child: Row(
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.only(left: 0.0, top: 4),
                           child: Text(
-                            'Status',
+                            order_list[index]['date'] ?? "Order Placed",
                             textAlign: TextAlign.left,
                             style: TextStyle(color: Colors.black, fontSize: 16),
                           ),
@@ -91,14 +214,14 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 110.0),
+                  SizedBox(
+                    width: 160,
                     child: Row(
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.only(left: 0.0, top: 4),
                           child: Text(
-                            'Total Items',
+                            "${order_list[index]['TotalItems']}",
                             textAlign: TextAlign.left,
                             style: TextStyle(color: Colors.black, fontSize: 16),
                           ),
@@ -106,14 +229,14 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 110.0),
+                  SizedBox(
+                    width: 160,
                     child: Row(
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.only(left: 0.0, top: 4),
                           child: Text(
-                            'Total',
+                            "${order_list[index]['Total']}",
                             textAlign: TextAlign.left,
                             style: TextStyle(color: Colors.black, fontSize: 16),
                           ),
@@ -121,164 +244,72 @@ class _WebCardState extends State<WebCard> with TickerProviderStateMixin {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 110.0),
+                  SizedBox(
+                    width: 160,
                     child: Row(
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.only(left: 0.0, top: 4),
-                          child: Text(
-                            'View',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(color: Colors.black, fontSize: 16),
-                          ),
-                        ),
+                            padding: const EdgeInsets.only(left: 0.0, top: 4),
+                            child: Icon(
+                              Icons.remove_red_eye,
+                              color: Colors.blue,
+                            )),
                       ],
                     ),
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 0.0, top: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 1.0),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left: 0.0, top: 4),
-                            child: Text(
-                              '406-9338089-364435555',
-                              style: TextStyle(color: Colors.black, fontSize: 16),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 50.0),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left: 0.0, top: 4),
-                            child: Text(
-                              '10 Aug 2021',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(color: Colors.black, fontSize: 16),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 110.0),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left: 0.0, top: 4),
-                            child: Text(
-                              'Order Placed',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(color: Colors.black, fontSize: 16),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 130.0),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left: 0.0, top: 4),
-                            child: Text(
-                              '11',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(color: Colors.black, fontSize: 16),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 110.0),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left: 0.0, top: 4),
-                            child: Text(
-                              '\$10.299',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(color: Colors.black, fontSize: 16),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 110.0),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(
-                              padding: const EdgeInsets.only(left: 0.0, top: 4),
-                              child: Icon(
-                                Icons.remove_red_eye,
-                                color: Colors.blue,
-                              )),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(0.0),
-                      child: Row(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(left: 0.0, top: 2),
-                            child: Text(
-                              'Cancellation Reason',
-                              style: TextStyle(color: Colors.black, fontSize: 14),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Row(
+            ),
+            if (order_list[index]['reason'] != null)
+              Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(0.0),
-                    child: Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(left: 0.0, top: 2),
-                          child: Text(
-                            'Expected Delivery Date Has Changed And The Product Is Arriving At A Later Date',
-                            style: TextStyle(color: Colors.black, fontSize: 16),
-                          ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                        child: Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(left: 0.0, top: 2),
+                              child: Text(
+                                'Cancellation Reason',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 14),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(0.0),
+                        child: Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(left: 0.0, top: 2),
+                              child: Text(
+                                "${order_list[index]['reason']}",
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 16),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ],
-              ),
-            ],
-          ),
+              )
+          ],
         ),
       ),
     );

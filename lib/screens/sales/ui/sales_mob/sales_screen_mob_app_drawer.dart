@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/screens/sales/ui/sales_main_screen.dart';
+import 'package:news_app/screens/sales/ui/sales_body/sales_main_screen.dart';
 import 'package:news_app/screens/sidebar/app_drawer.dart';
 
 class SalesScreenMobAppDrawer extends StatefulWidget {

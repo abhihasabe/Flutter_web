@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:news_app/screens/document/ui/components/document_user_card.dart';
-import 'order_card.dart';
+import 'sales_order_card.dart';
 
 class SalesScreenHeader extends StatefulWidget {
   const SalesScreenHeader({Key? key}) : super(key: key);
@@ -37,7 +37,7 @@ class _SalesScreenHeaderState extends State<SalesScreenHeader> {
                   )
                 : SizedBox.shrink(),
             SizedBox(
-              width: (size.width / 50)/3,
+              width: (size.width / 50) / 3,
             ),
             Text(
               tabName,

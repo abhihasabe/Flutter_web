@@ -1,6 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:news_app/screens/sales/widgets/sales_mob_card.dart';
+import 'package:news_app/screens/sales/ui/sales_mob/sales_mob_order_card.dart';
 
 class OrderCard extends StatefulWidget {
   const OrderCard({Key? key}) : super(key: key);

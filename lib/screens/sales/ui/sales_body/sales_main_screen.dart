@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/screens/sales/ui/components/sales_header.dart';
 import 'package:news_app/screens/sales/ui/components/sales_screen_subheader.dart';
-import 'package:news_app/screens/sales/widgets/sales_mob_card.dart';
+import 'package:news_app/screens/sales/ui/sales_mob/sales_mob_order_card.dart';
 import 'package:news_app/screens/sales/widgets/sales_web_card.dart';
-import 'sales_header.dart';
 
 class SalesMainScreen extends StatefulWidget {
   const SalesMainScreen({Key? key}) : super(key: key);
-
   @override
   _SalesMainScreenState createState() => _SalesMainScreenState();
 }
 
 class _SalesMainScreenState extends State<SalesMainScreen> {
-  late List<String> order_list;
+  late List<Map<String, dynamic>> order_list;
   bool? displayMobileLayout;
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,7 @@ class _SalesMainScreenState extends State<SalesMainScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  ...order_list.map((e) => WebCard()).toList(),
+                  WebCard(),
                 ],
               )
             : ListView(
@@ -79,6 +78,32 @@ class _SalesMainScreenState extends State<SalesMainScreen> {
   @override
   initState() {
     super.initState();
-    order_list = ['1', '2', '3', '4', '5', '6', '1', '2', '3', '4', '5', '6'];
+    order_list = [
+      {
+        'orderNo': '406-9338089-364435555',
+        'OrderPlaced': '10 Aug 2021',
+        'status': 'Status',
+        'TotalItems': 11,
+        'Total': '\$10.299'
+      },
+      {
+        'orderNo': '406-9338089-364435556',
+        'OrderPlaced': '10 Aug 2021',
+        'status': 'Order Delivered',
+        'date': '12 Aug 2021',
+        'TotalItems': 11,
+        'Total': '\$10.299'
+      },
+      {
+        'orderNo': '406-9338089-364435557',
+        'OrderPlaced': '10 Aug 2021',
+        'status': 'Order Cancelled',
+        'date': '14 Aug 2021',
+        'TotalItems': 11,
+        'Total': '\$10.299',
+        'reason':
+            'Expected Delivery Date Has Changed And The Product Is Arriving At A Later Date'
+      }
+    ];
   }
 }
