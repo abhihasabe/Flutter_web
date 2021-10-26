@@ -8,8 +8,8 @@ import 'dart:ui';
 
 import 'package:flutter/services.dart';
 import 'package:news_app/route/route.dart' as route;
-import 'package:news_app/screens/PreSales/ui/EnquiryDetails/enquiry_details_presale.dart';
 import 'package:news_app/screens/PreSales/ui/create_enquiry_presale.dart';
+import 'package:news_app/screens/helpdesk/ui/create_ticket.dart';
 
 import 'package:news_app/screens/helpdesk/ui/ticket_details.dart';
 import 'package:news_app/screens/helpdesk/widget/helpdesk_mob_card.dart';
@@ -204,9 +204,9 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left:38.0, bottom: 18),
+            padding: const EdgeInsets.only(left:38.0, bottom: 8),
             child: Container(
-              width: MediaQuery.of(context).size.width/4,
+              width: MediaQuery.of(context).size.width/5,
               child: Padding(
                 padding: const EdgeInsets.only(left: 12.0, right: 12.0),
                 child: TextField(
@@ -241,14 +241,27 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
               padding: const EdgeInsets.only(right: 18.0, bottom: 8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  ButtonWidget(
-                    label: "Create New",
-                    onPress: () async {
+                  ElevatedButton(
+                    style: ButtonStyle(
+                      textStyle: MaterialStateProperty.all<TextStyle>(
+                          TextStyle(color: textColor, fontSize: 16, letterSpacing: 1)),
+                      backgroundColor: MaterialStateProperty.all(primaryColor),
+                    ),
+                    onPressed: ()
+                    {
                       Navigator.push(context,  MaterialPageRoute(
-                          builder: (context) =>CreateEnquiryPresale()));
+                          builder: (context) =>createticket()));
                     },
+                    child: Container(
+                      height: 35,
+                      width: 175,
+                      alignment: Alignment.center,
+                      child:
+                      Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+                        Text('Create new', style: TextStyle(color: textDarkColor)),]),
+                    ),
                   ),
                 ],
               ),
@@ -389,7 +402,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
             Text(
               'HelpDesk',
               style: TextStyle(
-                color: Colors.white,
+                color: Colors.black,
                 fontSize: MyThemes.FontTitle,
               ),
             ),
@@ -456,7 +469,7 @@ class _HelpDeskScreenState extends State<HelpDeskScreen> with TickerProviderStat
                             if(kIsWeb)
                             {
                               Navigator.push(context,  MaterialPageRoute(
-                                  builder: (context) =>EnquiryDetailPresale()));
+                                  builder: (context) =>TicketDetails()));
                             }
                             else
                             {
